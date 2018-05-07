@@ -30,6 +30,7 @@ const Topbar = Block.extend`
   background: linear-gradient(to right, #fafafa, whitesmoke);
   box-shadow: 0 1px 1px lightgrey;
   overflow: visible;
+  align-items: stretch;
 `
 const Logo = styled.svg`
   stroke: #1a1a1a;
@@ -37,6 +38,9 @@ const Logo = styled.svg`
   fill: #1a1a1a;
   width: 7em;
   padding-top: 0.4em;
+`
+const StyledLink = styled(Link)`
+  display: flex;
 `
 const Icon = styled.svg`
   display: flex;
@@ -46,6 +50,7 @@ const Icon = styled.svg`
 `
 const NavItems = Block.extend`
   max-width: 20em;
+  align-items: stretch;
 `
 const Content = Block.extend`
   display: block;
@@ -130,9 +135,9 @@ function timeNow() {
 
 const Navbar = props => (
   <Topbar>
-    <Link to='/'><Logo viewBox={Svg.signature.viewbox}>
+    <StyledLink to='/'><Logo viewBox={Svg.signature.viewbox}>
       <path d={Svg.signature.path} />
-    </Logo></Link>
+    </Logo></StyledLink>
     <NavItems>
       {props.children}
     </NavItems>
@@ -156,30 +161,30 @@ class App extends Component {
     return (
       <Fragment>
         <Navbar>
-          <Link to='/about'><Icon
+          <StyledLink to='/about'><Icon
             width={Svg.about.width}
             fill={colors[0]}
             viewBox={Svg.about.viewbox}>
             <path d={Svg.about.path} />
-          </Icon></Link>
-        <Link to='/contact'><Icon
+          </Icon></StyledLink>
+        <StyledLink to='/contact'><Icon
             width={Svg.contact.width}
             fill={colors[1]}
             viewBox={Svg.contact.viewbox}>
             <path d={Svg.contact.path} />
-          </Icon></Link>
-        <Link to='/projects'><Icon
+          </Icon></StyledLink>
+        <StyledLink to='/projects'><Icon
             width={Svg.projects.width}
             fill={colors[2]}
             viewBox={Svg.projects.viewbox}>
             <path d={Svg.projects.path} />
-          </Icon></Link>
-        <Link to='/resume'><Icon
+          </Icon></StyledLink>
+        <StyledLink to='/resume'><Icon
             width={Svg.resume.width}
             fill={colors[3]}
             viewBox={Svg.resume.viewbox}>
             <path d={Svg.resume.path} />
-          </Icon></Link>
+          </Icon></StyledLink>
         </Navbar>
         <Content>
           <Switch>
