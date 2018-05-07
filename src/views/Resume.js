@@ -1,5 +1,5 @@
 import React, { Component, Segment } from 'react'
-import my from './personal.config.js'
+import my from '../personal.config.js'
 import styled from 'styled-components'
 import './Resume.css';
 
@@ -43,15 +43,15 @@ const Details = (props) => (
 
 const Heart = styled.span`
   position: relative;
-  font-size: 0.5em;
+  font-size: 0.4em;
   color: ${props => props.color ? props.color : '#1a1a1a'};
-  top: -0.25em;
+  top: -0.5em;
   padding: ${props => props.first ? '.33em' : '1em'};
 `
 function HeartSeparatedList(list) {
   let items = list.map( (item, i) => (
     i === 0 ? <span><Heart first></Heart>{item}</span> :
-    <span><Heart>♡</Heart>{item}</span>
+    <span><Heart>🖤</Heart>{item}</span>
   ))
   return (
     <span>

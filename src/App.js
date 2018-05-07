@@ -1,9 +1,15 @@
 import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
 import showdown from 'showdown'
+import { Route, Link, Switch } from 'react-router-dom'
 
 import Svg from './svg'
-import Resume from './Resume'
+import Resume from './views/Resume'
+import Home from './views/Home'
+import Projects from './views/Projects'
+
+import './App.css'
+
 
 const Block = styled.div`
   display: flex;
@@ -30,12 +36,10 @@ const Logo = styled.svg`
   stroke-width: 10;
   fill: #1a1a1a;
   width: 7em;
-`
-const Link = styled.a`
-  display: flex;
-  height: 100%;
+  padding-top: 0.4em;
 `
 const Icon = styled.svg`
+  display: flex;
   margin: 1em;
   fill: ${props => props.fill ? props.fill : '#1a1a1a'};
   width: ${props => props.width ? props.width : '4em'};
@@ -45,8 +49,8 @@ const NavItems = Block.extend`
 `
 const Content = Block.extend`
   display: block;
-
-  padding: 5.5em 1em 1em 1em;
+  font-size: 1.25em;
+  padding: 6.5em 2em 2em 2em;
 `
 const PostTitle = Block.extend`
   justify-content: flex-start;
@@ -64,16 +68,42 @@ const HeartSeparator = styled.span`
   color: red;
 `
 
+let home_md = `
+# oh shit this is markdown
+check out this list:
+1. here's an item
+2. oh shit here's another
+`
+let about_md = `
+## oh, hello there! thanks for stopping by
 
-let markdown = `
+my name is travis
+
+i like to work with numbers and build things
+<br />
+interested in hiring me for web development?
+looking for a math tutor?
+hit me up!
+
 here's a list of projects i can contribute to possibly!
   * tridactyl
   * chunkwm
   * svgomg
   * phosphorjs
 `
+let contact_md = `
+##I can be found all across the world wide web
+###Please feel free to stop on by!
+<br />
+* me @ travisk.com
+* tdkohlbeck on github
+* tdkohlbeck on soundcloud
+* ...and many more!
+`
 const converter = new showdown.Converter()
-const htmlBlogPost = converter.makeHtml(markdown)
+const htmlBlogPost = converter.makeHtml(about_md)
+const home_html = converter.makeHtml(home_md)
+const contact_html = converter.makeHtml(contact_md)
 
 function getRandomHslColorScheme(colorCount) {
   const
@@ -100,7 +130,7 @@ function timeNow() {
 
 const Navbar = props => (
   <Topbar>
-    <Link href='/'><Logo viewBox={Svg.signature.viewbox}>
+    <Link to='/'><Logo viewBox={Svg.signature.viewbox}>
       <path d={Svg.signature.path} />
     </Logo></Link>
     <NavItems>
@@ -111,11 +141,13 @@ const Navbar = props => (
 
 // DOMPurify
 const About = props => (
-  <Content>
-    <PostTitle>sup</PostTitle>
-    <PostDateTime>{timeNow()}</PostDateTime>
-    <div dangerouslySetInnerHTML={{__html: htmlBlogPost }} />
-  </Content>
+  <div dangerouslySetInnerHTML={{__html: htmlBlogPost }} />
+)
+
+const Contact = props => (
+  <div>
+    <div dangerouslySetInnerHTML={{__html: contact_html}} />
+  </div>
 )
 
 class App extends Component {
@@ -124,32 +156,40 @@ class App extends Component {
     return (
       <Fragment>
         <Navbar>
-          <Link href='about'><Icon
+          <Link to='/about'><Icon
             width={Svg.about.width}
             fill={colors[0]}
             viewBox={Svg.about.viewbox}>
             <path d={Svg.about.path} />
           </Icon></Link>
-          <Link href='contact'><Icon
+        <Link to='/contact'><Icon
             width={Svg.contact.width}
             fill={colors[1]}
             viewBox={Svg.contact.viewbox}>
             <path d={Svg.contact.path} />
           </Icon></Link>
-        <Link href='projects'><Icon
+        <Link to='/projects'><Icon
             width={Svg.projects.width}
             fill={colors[2]}
             viewBox={Svg.projects.viewbox}>
             <path d={Svg.projects.path} />
           </Icon></Link>
-        <Link href='resume'><Icon
+        <Link to='/resume'><Icon
             width={Svg.resume.width}
             fill={colors[3]}
             viewBox={Svg.resume.viewbox}>
             <path d={Svg.resume.path} />
           </Icon></Link>
         </Navbar>
-        <Resume />
+        <Content>
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/about' component={About} />
+            <Route path='/contact' component={Contact} />
+            <Route path='/projects' component={Projects} />
+            <Route path='/resume' component={Resume} />
+          </Switch>
+        </Content>
       </Fragment>
     )
   }

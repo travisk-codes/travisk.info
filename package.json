@@ -3,8 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "dompurify": "^1.0.4",
+    "npm": "^6.0.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
     "showdown": "^1.8.6",
     "styled-components": "^3.2.6"
