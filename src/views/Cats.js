@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react'
 import styled, { css } from 'styled-components'
-import Cats from './Cats'
 
 const Page = styled.div`
   display: flex;
@@ -85,7 +84,12 @@ class Home extends Component {
     console.log(Pics)
     let { selectedPic, zoomed } = this.state
     return (
-      <Cats />
+      <Page>
+        {Pics}
+        <ZoomedFrame zoomed={this.state.zoomed} onClick={() => this.selectPic(0)}>
+          <Pic src={`cat-pics/${this.state.selectedPic}.jpg`} />
+        </ZoomedFrame>
+      </Page>
     )
   }
 }

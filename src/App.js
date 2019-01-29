@@ -37,10 +37,12 @@ const Logo = styled.svg`
   stroke-width: 10;
   fill: #1a1a1a;
   width: 7em;
-  padding-top: 0.4em;
 `
 const StyledLink = styled(Link)`
   display: flex;
+  &:hover {
+    transform: scale(1.1);
+  }
 `
 const Icon = styled.svg`
   display: flex;
@@ -55,8 +57,10 @@ const NavItems = Block.extend`
 const Content = Block.extend`
   display: block;
   font-size: 1.25em;
-  padding: 6.5em 2em 2em 2em;
+  padding-top: 4em;
 `
+// padding: 6.5em 2em 2em 2em;
+
 const PostTitle = Block.extend`
   justify-content: flex-start;
 
@@ -160,6 +164,15 @@ class App extends Component {
     const colors = getRandomHslColorScheme(4)
     return (
       <Fragment>
+        <Content>
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/about' component={About} />
+            <Route path='/contact' component={Contact} />
+            <Route path='/projects' component={Projects} />
+            <Route path='/resume' component={Resume} />
+          </Switch>
+        </Content>
         <Navbar>
           <StyledLink to='/about'><Icon
             width={Svg.about.width}
@@ -186,15 +199,6 @@ class App extends Component {
             <path d={Svg.resume.path} />
           </Icon></StyledLink>
         </Navbar>
-        <Content>
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <Route path='/about' component={About} />
-            <Route path='/contact' component={Contact} />
-            <Route path='/projects' component={Projects} />
-            <Route path='/resume' component={Resume} />
-          </Switch>
-        </Content>
       </Fragment>
     )
   }
