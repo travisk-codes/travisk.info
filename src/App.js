@@ -18,7 +18,7 @@ const light_palette = {
   secondary: 'whitesmoke',
   top_bar_shadow: 'lightgrey',
   signature: '#1a1a1a',
-  bg: 'white',
+  bg: '#fafafa',
 
 }
 
@@ -243,10 +243,10 @@ const Toggle = styled.div`
   width: 5em;
   height: 3em;
   margin: 2em;
-  background-color: hsl(0, 0%, 20%);
+  background-color: ${props => props.isDarkModeOn ? '#fafafa' : '#1a1a1a'};
   border-radius: 1.5em;
   cursor: pointer;
-  box-shadow: 0 .2em hsl(0, 0%, 40%) inset;
+  box-shadow: 0 .2em hsl(0, 0%, 50%) inset;
 `
 
 const Button = styled.div`
@@ -256,9 +256,9 @@ const Button = styled.div`
   width: 2em;
   height: 2em;
   border-radius: 1.5em;
-  background-color: whitesmoke;
+  background-color: ${props => props.isDarkModeOn ? '#1a1a1a' : 'whitesmoke'};
   transition: 0.1s linear;
-  box-shadow: 0 .2em grey;
+  box-shadow: 0 .2em hsl(0, 0%, 50%);
   ${props => props.isDarkModeOn && css`
     transform: translateX(2em)
   `}
@@ -266,7 +266,7 @@ const Button = styled.div`
 `
 
 const DarkModeToggle = props => (
-  <Toggle onClick={props.toggle}>
+  <Toggle onClick={props.toggle} isDarkModeOn={props.isDarkModeOn}>
     <Button isDarkModeOn={props.isDarkModeOn} />
   </Toggle>
 )
