@@ -1,4 +1,4 @@
-import React, { Component, Segment } from 'react'
+import React, { Component } from 'react'
 import my from '../personal.config.js'
 import styled from 'styled-components'
 import './Resume.css';
@@ -51,7 +51,7 @@ const Heart = styled.span`
 function HeartSeparatedList(list) {
   let items = list.map( (item, i) => (
     i === 0 ? <span><Heart first></Heart>{item}</span> :
-    <span><Heart>🖤</Heart>{item}</span>
+      <span><Heart><span aria-label='heart'role='img'>🖤</span></Heart>{item}</span>
   ))
   return (
     <span>

@@ -1,24 +1,10 @@
-import React, { Component, Fragment } from 'react'
-import styled, { css } from 'styled-components'
-import { Route, Redirect, Link, Switch } from 'react-router-dom'
+import React, { Component } from 'react'
+import styled from 'styled-components'
 
-import { getRandomHslColorScheme } from '../utils'
+// import { getRandomHslColorScheme } from '../utils'
 
 const Page = styled.div`
   padding: 1.25em;
-`
-
-const Slink = styled(Link)`
-  text-decoration: none;
-  color: ${props => props.color};
-  &:hover {
-    color: white;
-    > * {
-      padding-left: 0.5em;
-      background-color: ${props => props.color };
-      border-radius: .1em;
-    }
-  }
 `
 
 class Bookmarks extends Component {

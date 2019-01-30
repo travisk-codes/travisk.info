@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
 
 const Page = styled.div`
@@ -70,25 +70,16 @@ class Home extends Component {
 
   render() {
     let Pics = new Array(14).fill().map((_, i) => (
-      <PicFrame onClick={() => this.selectPic(i+1)}>
+      <PicFrame key={i+1} onClick={() => this.selectPic(i+1)}>
         <Pic src={`cat-pics/${i+1}.jpg`} />
       </PicFrame>
     ))
-    /*let Pics = []
-    for (let i = 0; i < 14; i++) {
-      Pics.push(
-        <PicFrame onClick={() => this.selectPic(i+1)}>
-          <Pic src={`cat-pics/${i+1}.jpg`} />
-        </PicFrame>
-      )
-    }*/
-    console.log(Pics)
     let { selectedPic, zoomed } = this.state
     return (
       <Page bg_color={this.props.palette.bg}>
         {Pics}
-        <ZoomedFrame zoomed={this.state.zoomed} onClick={() => this.selectPic(0)}>
-          <Pic src={`cat-pics/${this.state.selectedPic}.jpg`} />
+        <ZoomedFrame zoomed={zoomed} onClick={() => this.selectPic(0)}>
+          <Pic src={`cat-pics/${selectedPic}.jpg`} />
         </ZoomedFrame>
       </Page>
     )

@@ -1,5 +1,3 @@
-import { isDate } from "util";
-
 export function getRandomHslColorScheme(colorCount, is_dark_mode) {
   const
     hue = Math.floor(Math.random() * 360),
@@ -12,6 +10,5 @@ export function getRandomHslColorScheme(colorCount, is_dark_mode) {
       `hsl( ${color}, 80%, ${is_dark_mode ? '60%' : '50%'})`,
     )
   }
-  console.log(values[3])
   return values
 }

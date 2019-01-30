@@ -1,5 +1,4 @@
-import React, { Fragment } from 'react'
-import styled from 'styled-components'
+import React from 'react'
 import showdown from 'showdown'
 import purify from 'dompurify'
 

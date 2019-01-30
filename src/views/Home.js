@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react'
-import styled, { css } from 'styled-components'
-import { Route, Redirect, Link, Switch } from 'react-router-dom'
+import React, { Component } from 'react'
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 import { getRandomHslColorScheme } from '../utils'
 
