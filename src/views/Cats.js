@@ -7,6 +7,7 @@ const Page = styled.div`
   width: 100%;
   flex-wrap: wrap;
   padding: 1em;
+  background-color: ${props => props.bg_color};
 `
 const Pic = styled.img`
   display: block;
@@ -84,7 +85,7 @@ class Home extends Component {
     console.log(Pics)
     let { selectedPic, zoomed } = this.state
     return (
-      <Page>
+      <Page bg_color={this.props.palette.bg}>
         {Pics}
         <ZoomedFrame zoomed={this.state.zoomed} onClick={() => this.selectPic(0)}>
           <Pic src={`cat-pics/${this.state.selectedPic}.jpg`} />

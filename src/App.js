@@ -84,14 +84,12 @@ class App extends Component {
       <Fragment>
         <Content bg_color={palette.bg}>
           <Switch>
-            <Route exact path='/'>
-              <Home colors={this.state.colors} />
-            </Route>
-            <Route path='/about' component={About} />
+            <Route exact path='/'><Home colors={this.state.colors} /></Route>
+            <Route path='/about'><About /></Route>
             <Route path='/contact' component={Contact} />
             <Route path='/projects' component={Projects} />
             <Route path='/resume' component={Resume} />
-            <Route path='/cat-pics' component={Cats} />
+            <Route path='/cat-pics'><Cats palette={palette} /></Route>
             <Route path='/links' component={Bookmarks} />
           </Switch>
         </Content>
