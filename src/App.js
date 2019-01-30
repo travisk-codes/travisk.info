@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import showdown from 'showdown'
 import { Route, Link, Switch } from 'react-router-dom'
 
@@ -7,9 +7,28 @@ import Svg from './svg'
 import Resume from './views/Resume'
 import Home from './views/Home'
 import Projects from './views/Projects'
+import Cats from './views/Cats'
+import Bookmarks from './views/Bookmarks'
+import { getRandomHslColorScheme } from './utils'
 
 import './App.css'
+ 
+const light_palette = {
+  primary: '#fafafa',
+  secondary: 'whitesmoke',
+  top_bar_shadow: 'lightgrey',
+  signature: '#1a1a1a',
+  bg: 'white',
 
+}
+
+const dark_palette = {
+  primary: '#1a1a1a',
+  secondary: '#1a1a1a',
+  top_bar_shadow: '#1a1a1a',
+  signature: '#fafafa',
+  bg: '#1a1a1a',
+}
 
 const Block = styled.div`
   display: flex;
@@ -27,21 +46,22 @@ const Topbar = Block.extend`
   height: 5em;
   padding: 0 1em;
 
-  background: linear-gradient(to right, #fafafa, whitesmoke);
-  box-shadow: 0 1px 1px lightgrey;
+  background: linear-gradient(to right, ${props => props.left_color}, ${props => props.right_color});
+  box-shadow: 0 1px 1px ${props => props.shadow_color};
   overflow: visible;
   align-items: stretch;
 `
 const Logo = styled.svg`
-  stroke: #1a1a1a;
+  stroke: ${props => props.color};
   stroke-width: 10;
-  fill: #1a1a1a;
+  fill: ${props => props.color};
   width: 7em;
 `
 const StyledLink = styled(Link)`
   display: flex;
+  transition: .05s linear;
   &:hover {
-    transform: scale(1.1);
+    transform: rotate(${() => (Math.random() * 10 - 5)}deg) scale(1.1);
   }
 `
 const Icon = styled.svg`
@@ -55,9 +75,12 @@ const NavItems = Block.extend`
   align-items: stretch;
 `
 const Content = Block.extend`
+  position: relative;
   display: block;
+  height: 100%;
   font-size: 1.25em;
   padding-top: 4em;
+  background-color: ${props => props.bg_color}
 `
 // padding: 6.5em 2em 2em 2em;
 
@@ -114,37 +137,19 @@ const htmlBlogPost = converter.makeHtml(about_md)
 const home_html = converter.makeHtml(home_md)
 const contact_html = converter.makeHtml(contact_md)
 
-function getRandomHslColorScheme(colorCount) {
-  const
-    hue = Math.floor( Math.random() * 360 ),
-    shift = Math.floor( 150 / colorCount ),
-    values = []
-  for ( let i = 0; i < colorCount; i++ ) {
-    let color = hue + shift * i
-    if (color > 360) color = color - 360
-    values.push(
-      `hsl( ${color}, 80%, 50%)`,
-    )
-  }
-  console.log(values[3])
-  return values
-}
-
-function timeNow() {
-  const now = new Date()
-  return `
-    ${now.toLocaleDateString()} ♥ ${now.toLocaleTimeString()}
-  `
-}
-
 const Navbar = props => (
-  <Topbar>
-    <StyledLink to='/'><Logo viewBox={Svg.signature.viewbox}>
-      <path d={Svg.signature.path} />
-    </Logo></StyledLink>
+  <Topbar shadow_color={props.shadow_color}left_color={props.left_color} right_color={props.right_color}>
+
+    <StyledLink to='/'>
+      <Logo viewBox={Svg.signature.viewbox} color={props.logo_color}>
+        <path d={Svg.signature.path} />
+      </Logo>
+    </StyledLink>
+
     <NavItems>
       {props.children}
     </NavItems>
+
   </Topbar>
 )
 
@@ -160,48 +165,108 @@ const Contact = props => (
 )
 
 class App extends Component {
+  constructor() {
+    super()
+    this.colors = getRandomHslColorScheme(4)
+    this.state = {
+      darkMode: false,
+    }
+    this.toggleDarkMode = this.toggleDarkMode.bind(this)
+  }
+
+  toggleDarkMode() {
+    this.setState({
+      darkMode: !this.state.darkMode,
+    })
+  }
+
   render() {
-    const colors = getRandomHslColorScheme(4)
+    const palette = this.state.darkMode ? dark_palette : light_palette
     return (
       <Fragment>
-        <Content>
+        <Content bg_color={palette.bg}>
           <Switch>
-            <Route exact path='/' component={Home} />
+            <Route exact path='/'>
+              <Home colors={this.colors} />
+            </Route>
             <Route path='/about' component={About} />
             <Route path='/contact' component={Contact} />
             <Route path='/projects' component={Projects} />
             <Route path='/resume' component={Resume} />
+            <Route path='/cat-pics' component={Cats} />
+            <Route path='/links' component={Bookmarks} />
           </Switch>
         </Content>
-        <Navbar>
+        <Navbar 
+          left_color={palette.primary} 
+          right_color={palette.secondary}
+          logo_color={palette.signature}
+          shadow_color={palette.top_bar_shadow}>
           <StyledLink to='/about'><Icon
             width={Svg.about.width}
-            fill={colors[0]}
+            fill={this.colors[0]}
             viewBox={Svg.about.viewbox}>
             <path d={Svg.about.path} />
-          </Icon></StyledLink>
-        <StyledLink to='/contact'><Icon
+            </Icon>
+          </StyledLink>
+          <StyledLink to='/contact'><Icon
             width={Svg.contact.width}
-            fill={colors[1]}
+            fill={this.colors[1]}
             viewBox={Svg.contact.viewbox}>
             <path d={Svg.contact.path} />
           </Icon></StyledLink>
-        <StyledLink to='/projects'><Icon
+          <StyledLink to='/projects'><Icon
             width={Svg.projects.width}
-            fill={colors[2]}
+            fill={this.colors[2]}
             viewBox={Svg.projects.viewbox}>
             <path d={Svg.projects.path} />
           </Icon></StyledLink>
-        <StyledLink to='/resume'><Icon
+          <StyledLink to='/resume'><Icon
             width={Svg.resume.width}
-            fill={colors[3]}
+            fill={this.colors[3]}
             viewBox={Svg.resume.viewbox}>
             <path d={Svg.resume.path} />
           </Icon></StyledLink>
         </Navbar>
+        <DarkModeToggle toggle={this.toggleDarkMode} isDarkModeOn={this.state.darkMode} />
       </Fragment>
     )
   }
 }
 
 export default App;
+
+const Toggle = styled.div`
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 5em;
+  height: 3em;
+  margin: 2em;
+  background-color: hsl(0, 0%, 20%);
+  border-radius: 1.5em;
+  cursor: pointer;
+  box-shadow: 0 .2em hsl(0, 0%, 40%) inset;
+`
+
+const Button = styled.div`
+  position: absolute;
+  left: .5em;
+  top: .5em;
+  width: 2em;
+  height: 2em;
+  border-radius: 1.5em;
+  background-color: whitesmoke;
+  transition: 0.1s linear;
+  box-shadow: 0 .2em grey;
+  ${props => props.isDarkModeOn && css`
+    transform: translateX(2em)
+  `}
+
+`
+
+const DarkModeToggle = props => (
+  <Toggle onClick={props.toggle}>
+    <Button isDarkModeOn={props.isDarkModeOn} />
+  </Toggle>
+)
