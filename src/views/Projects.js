@@ -2,6 +2,8 @@ import React from 'react'
 import showdown from 'showdown'
 import purify from 'dompurify'
 
+import Project from '../components/Project'
+
 const copy = `
 ### Apps
 * Random Notes
@@ -20,5 +22,8 @@ sd.setFlavor('github')
 const html = purify.sanitize(sd.makeHtml(copy))
 
 export default props => (
-  <div dangerouslySetInnerHTML={ {__html: html} } />
+  <div>
+    <div dangerouslySetInnerHTML={ {__html: html} } />
+    <Project />
+  </div>
 )

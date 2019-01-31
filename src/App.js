@@ -24,6 +24,7 @@ const light_palette = {
   top_bar_shadow: 'lightgrey',
   signature: '#1a1a1a',
   bg: '#fafafa',
+  text: '#1a1a1a'
 }
 const dark_palette = {
   primary: '#1a1a1a',
@@ -31,6 +32,7 @@ const dark_palette = {
   top_bar_shadow: '#1a1a1a',
   signature: '#fafafa',
   bg: '#1a1a1a',
+  text: '#fafafa'
 }
 
 const Block = styled.div`
@@ -85,8 +87,8 @@ class App extends Component {
         <Content bg_color={palette.bg}>
           <Switch>
             <Route exact path='/'><Home colors={this.state.colors} /></Route>
-            <Route path='/about'><About /></Route>
-            <Route path='/contact' component={Contact} />
+            <Route path='/about'><About text_color={palette.text}/></Route>
+            <Route path='/contact'><Contact text_color={palette.text} /></Route>
             <Route path='/projects' component={Projects} />
             <Route path='/resume' component={Resume} />
             <Route path='/cat-pics'><Cats palette={palette} /></Route>

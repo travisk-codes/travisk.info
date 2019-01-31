@@ -1,6 +1,8 @@
 import React from 'react'
 import showdown from 'showdown'
 
+import Page from '../components/Page'
+
 let contact_md = `
 ##I can be found all across the world wide web
 ###Please feel free to stop on by!
@@ -12,5 +14,5 @@ let contact_md = `
 `
 
 export default props => (
-  <div dangerouslySetInnerHTML={{ __html: new showdown.Converter().makeHtml(contact_md) }} />
+  <Page text_color={props.text_color} dangerouslySetInnerHTML={{ __html: new showdown.Converter().makeHtml(contact_md) }} />
 )

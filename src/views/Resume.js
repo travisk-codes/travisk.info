@@ -50,8 +50,8 @@ const Heart = styled.span`
 `
 function HeartSeparatedList(list) {
   let items = list.map( (item, i) => (
-    i === 0 ? <span><Heart first></Heart>{item}</span> :
-      <span><Heart><span aria-label='heart'role='img'>🖤</span></Heart>{item}</span>
+    i === 0 ? <span key={i}><Heart first></Heart>{item}</span> :
+      <span key={i}><Heart><span aria-label='heart'role='img'>🖤</span></Heart>{item}</span>
   ))
   return (
     <span>
@@ -74,7 +74,7 @@ class Resume extends Component {
             end={my.job.duration[1]}
           />
           <ul>
-            {my.job.bullets.map( item => <li>{item}</li>)}
+            {my.job.bullets.map( (item, i) => <li key={i}>{item}</li>)}
           </ul>
         </Section>
         <Section title='Portfolio'>
@@ -103,7 +103,7 @@ class Resume extends Component {
             end={my.education.duration[1]}
           />
           <ul>
-            {my.education.bullets.map( bullet => <li>{bullet}</li>)}
+            {my.education.bullets.map( (bullet, i) => <li key={i}>{bullet}</li>)}
           </ul>
         </Section>
         <br />

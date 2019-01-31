@@ -1,6 +1,8 @@
 import React from 'react'
 import showdown from 'showdown'
 
+import Page from '../components/Page'
+
 let about_md = `
 ## oh, hello there! thanks for stopping by
 
@@ -19,7 +21,8 @@ here's a list of projects i can contribute to possibly!
   * phosphorjs
 `
 
+
 // DOMPurify
 export default props => (
-  <div dangerouslySetInnerHTML={{ __html: new showdown.Converter().makeHtml(about_md) }} />
+  <Page text_color={props.text_color} dangerouslySetInnerHTML={{ __html: new showdown.Converter().makeHtml(about_md) }} />
 )
