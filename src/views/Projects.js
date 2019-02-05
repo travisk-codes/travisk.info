@@ -9,7 +9,6 @@ const Page = styled.div`
   position: relative;
   padding-top: 1em;
   h1 {
-
     margin: .5em;
   }
 `
@@ -38,7 +37,8 @@ const html = purify.sanitize(sd.makeHtml(copy))
 export default props => (
   <Page>
     <Project title='Datum (web app)' img='datum.jpg' description={datum_description} />
-    <Project title='Datum (cli)' img='cat-pics/2.jpg' description={datum_description} />
+    <Project title='Datum (CLI)' img='cat-pics/2.jpg' description={datum_description} />
+    <Project title={`"Bag 'n Fits"`} img='cat-pics/2.jpg' description={datum_description} />
     <Project title='React-Random-Notes' img='cat-pics/3.jpg' description={datum_description} />
     <h1>Webpages</h1>
     <Project title='Math Tutoring' img='cat-pics/4.jpg' description={datum_description} />

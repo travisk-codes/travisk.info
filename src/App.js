@@ -56,6 +56,9 @@ const Icon = styled.svg`
   margin: 1em;
   fill: ${props => props.fill ? props.fill : '#1a1a1a'};
   width: ${props => props.width ? props.width : '4em'};
+  @media (max-width: 350px) {
+    margin: 1em 0.5em;
+  }
 `
 const Content = Block.extend`
   position: relative;

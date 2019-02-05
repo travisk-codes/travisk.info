@@ -37,6 +37,10 @@ const Logo = styled.svg`
   stroke-width: 10;
   fill: ${props => props.color};
   width: 7em;
+
+  @media (max-width: 400px) {
+    width: 6.5em;
+  }
 `
 const NavItems = Block.extend`
   max-width: 20em;

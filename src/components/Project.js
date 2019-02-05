@@ -20,11 +20,12 @@ const Image = styled.div`
 
   float: left;
   margin-right: 1em;
+  overflow: hidden;
 `
 const Text = styled.div`
   position: relative;
 
-  width: 15em;
+  width: 10em;
   flex: 1 1 auto;
 `
 const Title = styled.span`

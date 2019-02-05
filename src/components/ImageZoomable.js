@@ -22,9 +22,7 @@ const ZoomedImage = Image.extend`
 	animation:
 `
 const Caption = styled.span`
-
 `
-
 const Frame = styled.div`
 	position: relative;
 	object-fit: contain;	
@@ -54,26 +52,3 @@ export default class ImageZoomable extends Component {
     )
   }
 }
-
-const ProjFrame = styled.div`
-  position: relative;
-  width: 10em;
-  flex: 0 0 auto;
-  height: 10em;
-
-  float: left;
-  margin-right: 1em;
-`
-const CatsFrame = styled.div`
-  position: relative;
-  width: 10em;
-  flex: 1 1 auto;
-  margin: 1em;
-  overflow: hidden;
-  border-radius: .25em;
-  &:hover {
-    box-shadow: 0em 0.25em 1.5em #999;
-    cursor: pointer;
-		transform: scale(1.01);
-  }
-`
