@@ -54,9 +54,7 @@ export default props => (
     <Text>
       <Title>{props.title}</Title>
       <br />
-      <Description>
-        This is a longer description of what this project is and what it does
-      </Description>
+      <Description>{props.description}</Description>
     </Text>
   </Container>
 )

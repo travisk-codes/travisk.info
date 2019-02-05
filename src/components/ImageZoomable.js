@@ -14,10 +14,12 @@ const ZoomedImage = Image.extend`
 	right: 0;
 	top: 0;
 	width: 100%;
+	height: 100%;
 	padding: 2em;
-	padding-bottom: 100%;
 	background-color: hsla(0, 100%, 0%, 0.67);
 	z-index: 1;
+	object-fit: contain;
+	animation:
 `
 const Caption = styled.span`
 
@@ -25,7 +27,7 @@ const Caption = styled.span`
 
 const Frame = styled.div`
 	position: relative;
-	
+	object-fit: contain;	
 `
 
 export default class ImageZoomable extends Component {
