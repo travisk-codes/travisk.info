@@ -24,6 +24,6 @@ const html = purify.sanitize(sd.makeHtml(copy))
 export default props => (
   <div>
     <div dangerouslySetInnerHTML={ {__html: html} } />
-    <Project />
+    <Project title='Datum' img='datum.jpg' />
   </div>
 )

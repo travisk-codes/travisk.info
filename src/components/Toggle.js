@@ -11,7 +11,7 @@ const Toggle = styled.div`
   background-color: ${props => props.isDarkModeOn ? '#fafafa' : '#1a1a1a'};
   border-radius: 1.5em;
   cursor: pointer;
-  box-shadow: 0 .2em hsl(0, 0%, 50%) inset;
+  box-shadow: 0 .2em hsl(0, 0%, 50%) inset, 0 0 1em 1em ${props => props.isDarkModeOn ? '#1a1a1a' : '#fafafa'};
 `
 
 const Button = styled.div`

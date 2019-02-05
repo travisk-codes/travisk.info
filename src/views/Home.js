@@ -13,42 +13,33 @@ const RightMenu = styled.div`
   top: 4em;
   right: 0;
   padding: 1.25em;
-  &:hover {
-    width: 100%;
-  }
 `
 const LeftMenu = styled.div`
-  z-index: 0;
-  position: relative;
-  &:hover {
-    width: 100%;
-    z-index: 2;
-  }
+
 `
-const Slink = styled(Link)`
+const Slink = styled(Link).attrs(({ color }) => ({
+  color: color || 'red',
+}))`
+  position: relative;
   text-decoration: none;
   color: ${props => props.color};
   &:hover {
     color: white;
     > * {
-      padding-left: 0.25em;
+      padding: 0 0.5em;
       background-color: ${props => props.color };
       border-radius: .1em;
+      width: fit-content;
     }
   }
 `
 const RightLink = Slink.extend`
   text-align: right;
-  &:hover {
-    > * {
-      padding-right: 0.5em;
-    }
-  }
 `
 
 class Home extends Component {
   render() {
-    const colors = getRandomHslColorScheme(4)
+    const colors = getRandomHslColorScheme(4, (this.props.palette.theme === 'dark' ? true : false))
     return (
       <Page>
         <RightMenu>

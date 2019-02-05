@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
 
+import Img from '../components/ImageZoomable'
+
 const Page = styled.div`
   display: flex;
   position: relative;
@@ -12,7 +14,6 @@ const Page = styled.div`
 const Pic = styled.img`
   display: block;
   max-width: 100%;
-  max-height: 100%;
 `
 const PicFrame = styled.div`
   position: relative;
@@ -23,8 +24,6 @@ const PicFrame = styled.div`
   border-radius: .25em;
   &:hover {
     box-shadow: 0em 0.25em 1.5em #999;
-    cursor: pointer;
-    transform: scale(1.01);
   }
 `
 const ZoomedFrame = PicFrame.extend`
@@ -70,8 +69,11 @@ class Home extends Component {
 
   render() {
     let Pics = new Array(14).fill().map((_, i) => (
-      <PicFrame key={i+1} onClick={() => this.selectPic(i+1)}>
-        <Pic src={`cat-pics/${i+1}.jpg`} />
+//      <PicFrame key={i+1} onClick={() => this.selectPic(i+1)}>
+//        <Pic src={`cat-pics/${i+1}.jpg`} />
+//      </PicFrame>
+      <PicFrame>
+        <Img key={i} src={`cat-pics/${i+1}.jpg`} />
       </PicFrame>
     ))
     let { selectedPic, zoomed } = this.state

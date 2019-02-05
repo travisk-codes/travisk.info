@@ -19,6 +19,7 @@ import { getRandomHslColorScheme } from './utils'
 import './App.css'
  
 const light_palette = {
+  theme: 'light',
   primary: '#fafafa',
   secondary: 'whitesmoke',
   top_bar_shadow: 'lightgrey',
@@ -27,6 +28,7 @@ const light_palette = {
   text: '#1a1a1a'
 }
 const dark_palette = {
+  theme: 'dark',
   primary: '#1a1a1a',
   secondary: '#1a1a1a',
   top_bar_shadow: '#1a1a1a',
@@ -86,7 +88,7 @@ class App extends Component {
       <Fragment>
         <Content bg_color={palette.bg}>
           <Switch>
-            <Route exact path='/'><Home colors={this.state.colors} /></Route>
+            <Route exact path='/'><Home palette={palette} colors={this.state.colors} /></Route>
             <Route path='/about'><About text_color={palette.text}/></Route>
             <Route path='/contact'><Contact text_color={palette.text} /></Route>
             <Route path='/projects' component={Projects} />

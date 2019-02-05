@@ -1,23 +1,31 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 
+import Img from '../components/ImageZoomable'
+
 const Container = styled.div`
   position: relative;
-  background-color: red;
+
   width: 100%;
   padding: 1em;
   overflow: auto; /* stretch to whatever height the biggest child is */
+  display: flex;
+  flex-wrap: wrap;
 `
 const Image = styled.div`
   position: relative;
   width: 10em;
+  flex: 0 0 auto;
   height: 10em;
-  background-color: green;
+
   float: left;
   margin-right: 1em;
 `
 const Text = styled.div`
   position: relative;
+
+  width: 15em;
+  flex: 1 1 auto;
 `
 const Title = styled.span`
   font-size: 2em;
@@ -42,9 +50,9 @@ const Button = styled.div`
 `
 export default props => (
   <Container>
-    <Image />
+    <Image><Img style={{width: '100%'}}src={props.img} /></Image>
     <Text>
-      <Title>Project</Title>
+      <Title>{props.title}</Title>
       <br />
       <Description>
         This is a longer description of what this project is and what it does
