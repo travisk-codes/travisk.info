@@ -8,17 +8,6 @@ const Page = styled(Pg)`
   justify-content: center;
   flex-wrap: wrap;
 `
-
-let contact_md = `
-##I can be found all across the world wide web
-###Please feel free to stop on by!
-<br />
-* me @ travisk.com
-* tdkohlbeck on github
-* tdkohlbeck on soundcloud
-* ...and many more!
-`
-
 const Link = styled.a`
   display: inline-flex;
   flex: 1 1 auto;
@@ -92,7 +81,7 @@ const info = [
 export default props => (
   <Page palette={props.palette}>
     {info.map((info, i) => (
-      <Link href={info.url} text_color={ i ? info.color1 : props.palette.bg} bg_color={ i ? info.color2 : props.palette.text}>{info.name}</Link>
+      <Link key={i} href={info.url} text_color={ i ? info.color1 : props.palette.bg} bg_color={ i ? info.color2 : props.palette.text}>{info.name}</Link>
     ))}
   </Page>
 )

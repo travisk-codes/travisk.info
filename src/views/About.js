@@ -3,7 +3,7 @@ import showdown from 'showdown'
 
 import Page from '../components/Page'
 
-let about_md_OLD = `
+/*let about_md_OLD = `
 ## oh, hello there! thanks for stopping by
 
 my name is travis
@@ -19,7 +19,7 @@ here's a list of projects i can contribute to possibly!
   * chunkwm
   * svgomg
   * phosphorjs
-`
+`*/
 
 const about_md = `
 ## Thanks for stoping by!

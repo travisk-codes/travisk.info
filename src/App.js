@@ -17,7 +17,6 @@ import Svg from './svg'
 import { getRandomHslColorScheme } from './utils'
 
 import './App.css'
-import { pathToFileURL } from 'url';
  
 const light_palette = {
   theme: 'light',

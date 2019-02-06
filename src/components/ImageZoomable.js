@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 const Image = styled.img`
 	display: block;
@@ -21,8 +21,8 @@ const ZoomedImage = Image.extend`
 	object-fit: contain;
 	animation:
 `
-const Caption = styled.span`
-`
+//const Caption = styled.span`
+//`
 const Frame = styled.div`
 	position: relative;
 	object-fit: contain;	
@@ -47,7 +47,7 @@ export default class ImageZoomable extends Component {
     return (
 			<Frame onClick={this.toggle_zoom}>
 				{ this.state.zoomed ? <ZoomedImage src={this.props.src} /> : null }
-				<Image src={this.props.src} /> 
+				<Image style={this.props.style} src={this.props.src} /> 
 			</Frame>
     )
   }

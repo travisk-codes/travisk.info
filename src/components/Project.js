@@ -1,32 +1,33 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 import Img from '../components/ImageZoomable'
 
+const Image = styled(Img)`
+  width: 100%;
+`
 const Container = styled.div`
   position: relative;
-
   width: 100%;
-  padding: 1.5em 0;
+  padding-bottom: 1em;
   overflow: auto; /* stretch to whatever height the biggest child is */
   display: flex;
   flex-wrap: wrap;
   font-size: .9em;
 `
-const Image = styled.div`
+const ImageFrame = styled.div`
   position: relative;
   width: 10em;
   flex: 0 0 auto;
   height: 10em;
-
   float: left;
   margin-right: 1em;
+  margin-bottom: 1em;
   overflow: hidden;
   border-radius: .25em;
 `
 const Text = styled.div`
   position: relative;
-
   width: 10em;
   flex: 1 1 auto;
   margin-top: -.5em;
@@ -35,30 +36,19 @@ const Title = styled.span`
   font-size: 2em;
 `
 const Description = styled.span`
-
-`
-const Button = styled.div`
-  position: absolute;
-  left: .5em;
-  top: .5em;
-  width: 2em;
-  height: 2em;
-  border-radius: 1.5em;
-  background-color: ${props => props.isDarkModeOn ? '#1a1a1a' : 'whitesmoke'};
-  transition: 0.1s linear;
-  box-shadow: 0 .2em hsl(0, 0%, 50%);
-  ${props => props.isDarkModeOn && css`
-    transform: translateX(2em)
-  `}
-
 `
 export default props => (
   <Container>
-    <Image><Img style={{width: '100%'}}src={props.img} /></Image>
+
+    <ImageFrame>
+      <Image style={props.style} src={props.img} />
+    </ImageFrame>
+
     <Text>
       <Title>{props.title}</Title>
       <br />
       <Description>{props.description}</Description>
     </Text>
+
   </Container>
 )
