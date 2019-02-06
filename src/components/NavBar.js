@@ -29,7 +29,7 @@ const StyledLink = styled(Link)`
   display: flex;
   transition: .05s linear;
   &:hover {
-    transform: rotate(${() => (Math.random() * 10 - 5)}deg) scale(1.1);
+    transform: scale(1.1);
   }
 `
 const Logo = styled.svg`

@@ -9,9 +9,6 @@ const Header = () => (
   <div className='header'>
     <h1>Travis Kohlbeck</h1>
     <div className='contact-info'>
-      <span>{`${my.address[0]} ${my.address[1]}`}</span>
-      <span>{my.phone}</span>
-      <br />
       <span>github.com/tdkohlbeck</span>
       <span>me@travisk.com</span>
     </div>
@@ -52,8 +49,8 @@ const Heart = styled.span`
 `
 function HeartSeparatedList(list, color) {
   let items = list.map( (item, i) => (
-    i === 0 ? <span key={i}><Heart color={color}></Heart>{item}</span> :
-      <span key={i}><Heart color={color}><span aria-label='heart' role='img'>♥</span></Heart>{item}</span>
+    i === 0 ? <span style={{overflowWrap: 'break-word'}} key={i}><Heart color={color}></Heart>{item}</span> :
+      <span style={{overflowWrap: 'break-word'}} key={i}><Heart color={color}><span aria-label='heart' role='img'>♥</span></Heart>{item}</span>
   ))
   return (
     <span>
@@ -109,8 +106,6 @@ class Resume extends Component {
             {my.education.bullets.map( (bullet, i) => <li key={i}>{bullet}</li>)}
           </ul>
         </Section>
-        <br />
-        {'[1] Print-friendly version and annotations go here'}
       </div>
       </Page>
     );

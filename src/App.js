@@ -26,7 +26,7 @@ const light_palette = {
   top_bar_shadow: 'lightgrey',
   signature: '#1a1a1a',
   bg: '#fafafa',
-  text: '#1a1a1a'
+  text: '#1a1a1a',
 }
 const dark_palette = {
   theme: 'dark',
@@ -35,7 +35,7 @@ const dark_palette = {
   top_bar_shadow: '#1a1a1a',
   signature: '#fafafa',
   bg: '#1a1a1a',
-  text: '#fafafa'
+  text: '#fafafa',
 }
 
 const Block = styled.div`
@@ -49,7 +49,7 @@ const StyledLink = styled(Link)`
   display: flex;
   transition: .05s linear;
   &:hover {
-    transform: rotate(${() => (Math.random() * 10 - 5)}deg) scale(1.1);
+    transform: scale(1.15);
   }
 `
 const Icon = styled.svg`

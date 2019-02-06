@@ -7,10 +7,11 @@ const Container = styled.div`
   position: relative;
 
   width: 100%;
-  padding: 1em 0;
+  padding: 1.5em 0;
   overflow: auto; /* stretch to whatever height the biggest child is */
   display: flex;
   flex-wrap: wrap;
+  font-size: .9em;
 `
 const Image = styled.div`
   position: relative;
@@ -21,12 +22,14 @@ const Image = styled.div`
   float: left;
   margin-right: 1em;
   overflow: hidden;
+  border-radius: .25em;
 `
 const Text = styled.div`
   position: relative;
 
   width: 10em;
   flex: 1 1 auto;
+  margin-top: -.5em;
 `
 const Title = styled.span`
   font-size: 2em;
