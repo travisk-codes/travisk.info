@@ -4,14 +4,19 @@ import purify from 'dompurify'
 import styled from 'styled-components'
 
 import Project from '../components/Project'
+import Page from '../components/Page'
 
-const Page = styled.div`
+/*const Page = styled.div`
   position: relative;
-  padding-top: 1em;
+  padding: 1em;
   h1 {
     margin: .5em;
   }
-`
+
+  @media (max-width: 450px) {
+    font-size: 0.85em;
+  }
+`*/
 
 const copy = `
 ### Apps
@@ -35,7 +40,7 @@ sd.setFlavor('github')
 const html = purify.sanitize(sd.makeHtml(copy))
 
 export default props => (
-  <Page>
+  <Page palette={props.palette}>
     <Project title='Datum (web app)' img='datum.jpg' description={datum_description} />
     <Project title='Datum (CLI)' img='cat-pics/2.jpg' description={datum_description} />
     <Project title={`"Bag 'n Fits"`} img='cat-pics/2.jpg' description={datum_description} />

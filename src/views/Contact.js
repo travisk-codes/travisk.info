@@ -14,5 +14,5 @@ let contact_md = `
 `
 
 export default props => (
-  <Page text_color={props.text_color} dangerouslySetInnerHTML={{ __html: new showdown.Converter().makeHtml(contact_md) }} />
+  <Page palette={props.palette} dangerouslySetInnerHTML={{ __html: new showdown.Converter().makeHtml(contact_md) }} />
 )

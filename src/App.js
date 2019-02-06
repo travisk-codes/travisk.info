@@ -17,6 +17,7 @@ import Svg from './svg'
 import { getRandomHslColorScheme } from './utils'
 
 import './App.css'
+import { pathToFileURL } from 'url';
  
 const light_palette = {
   theme: 'light',
@@ -72,7 +73,7 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      darkMode: false,
+      darkMode: true,
       colors: getRandomHslColorScheme(4)
     }
     this.toggleDarkMode = this.toggleDarkMode.bind(this)
@@ -92,10 +93,10 @@ class App extends Component {
         <Content bg_color={palette.bg}>
           <Switch>
             <Route exact path='/'><Home palette={palette} colors={this.state.colors} /></Route>
-            <Route path='/about'><About text_color={palette.text}/></Route>
-            <Route path='/contact'><Contact text_color={palette.text} /></Route>
-            <Route path='/projects' component={Projects} />
-            <Route path='/resume' component={Resume} />
+            <Route path='/about'><About palette={palette}/></Route>
+            <Route path='/contact'><Contact palette={palette} /></Route>
+            <Route path='/projects'><Projects palette={palette} /></Route>
+            <Route path='/resume'><Resume palette={palette} /></Route>
             <Route path='/cat-pics'><Cats palette={palette} /></Route>
             <Route path='/links' component={Bookmarks} />
           </Switch>

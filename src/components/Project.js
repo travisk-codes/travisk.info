@@ -7,7 +7,7 @@ const Container = styled.div`
   position: relative;
 
   width: 100%;
-  padding: 1em;
+  padding: 1em 0;
   overflow: auto; /* stretch to whatever height the biggest child is */
   display: flex;
   flex-wrap: wrap;

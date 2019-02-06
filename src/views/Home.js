@@ -39,7 +39,7 @@ const RightLink = Slink.extend`
 
 class Home extends Component {
   render() {
-    const colors = getRandomHslColorScheme(4, (this.props.palette.theme === 'dark' ? true : false))
+    const colors = getRandomHslColorScheme(3, (this.props.palette.theme === 'dark' ? true : false))
     return (
       <Page>
         <RightMenu>
@@ -65,9 +65,6 @@ class Home extends Component {
         </Slink>
         <Slink color={colors[2]} to='/backgrounds'>
           <h2>Wallpapers</h2>
-        </Slink>
-        <Slink color={colors[3]} to='/math-tutor'>
-          <h2>Math Tutoring</h2>
         </Slink>
       </LeftMenu>
 

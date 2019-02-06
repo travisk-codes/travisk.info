@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import my from '../personal.config.js'
+import my from '../../personal.config.js'
 import styled from 'styled-components'
 import './Resume.css';
+
+import Page from '../../components/Page'
 
 const Header = () => (
   <div className='header'>
@@ -43,15 +45,15 @@ const Details = (props) => (
 
 const Heart = styled.span`
   position: relative;
-  font-size: 0.4em;
+  font-size: .5em;
   color: ${props => props.color ? props.color : '#1a1a1a'};
-  top: -0.5em;
+  top: -0.3em;
   padding: ${props => props.first ? '.33em' : '1em'};
 `
-function HeartSeparatedList(list) {
+function HeartSeparatedList(list, color) {
   let items = list.map( (item, i) => (
-    i === 0 ? <span key={i}><Heart first></Heart>{item}</span> :
-      <span key={i}><Heart><span aria-label='heart'role='img'>🖤</span></Heart>{item}</span>
+    i === 0 ? <span key={i}><Heart color={color}></Heart>{item}</span> :
+      <span key={i}><Heart color={color}><span aria-label='heart' role='img'>♥</span></Heart>{item}</span>
   ))
   return (
     <span>
@@ -63,6 +65,7 @@ function HeartSeparatedList(list) {
 class Resume extends Component {
   render() {
     return (
+      <Page palette={this.props.palette}>
       <div className="resume">
         <Header />
         <Section title='Experience'>
@@ -88,10 +91,10 @@ class Resume extends Component {
         <Section title='Technical'>
           <ul>
             <li>
-              <b>Languages: </b>{HeartSeparatedList(my.knowledge.languages)}
+              <b>Languages: </b>{HeartSeparatedList(my.knowledge.languages, this.props.palette.text)}
             </li>
-            <li><b>Practices: </b>{HeartSeparatedList(my.knowledge.practices)}</li>
-            <li><b>Technologies: </b>{HeartSeparatedList(my.knowledge.technologies)}</li>
+            <li><b>Practices: </b>{HeartSeparatedList(my.knowledge.practices, this.props.palette.text)}</li>
+            <li><b>Technologies: </b>{HeartSeparatedList(my.knowledge.technologies, this.props.palette.text)}</li>
           </ul>
         </Section>
         <Section title='Education'>
@@ -109,6 +112,7 @@ class Resume extends Component {
         <br />
         {'[1] Print-friendly version and annotations go here'}
       </div>
+      </Page>
     );
   }
 }
