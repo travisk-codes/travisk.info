@@ -22,7 +22,7 @@ here's a list of projects i can contribute to possibly!
 `*/
 
 const about_md = `
-## Thanks for stoping by!
+## Thanks for stopping by!
 <br />
 My name is Travis. I like building things and working with numbers. Please feel free to hire me.
 <br />

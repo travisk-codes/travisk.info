@@ -69,11 +69,8 @@ class Home extends Component {
 
   render() {
     let Pics = new Array(14).fill().map((_, i) => (
-//      <PicFrame key={i+1} onClick={() => this.selectPic(i+1)}>
-//        <Pic src={`cat-pics/${i+1}.jpg`} />
-//      </PicFrame>
-      <PicFrame>
-        <Img key={i} src={`cat-pics/${i+1}.jpg`} />
+      <PicFrame key={i}>
+        <Img src={`cat-pics/${i+1}.jpg`} />
       </PicFrame>
     ))
     let { selectedPic, zoomed } = this.state
