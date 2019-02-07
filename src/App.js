@@ -97,7 +97,7 @@ class App extends Component {
             <Route path='/projects'><Projects palette={palette} /></Route>
             <Route path='/resume'><Resume palette={palette} /></Route>
             <Route path='/cat-pics'><Cats palette={palette} /></Route>
-            <Route path='/links' component={Bookmarks} />
+            <Route path='/links'><Bookmarks palette={palette} /></Route>
           </Switch>
         </Content>
         <Navbar 

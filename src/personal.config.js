@@ -70,3 +70,41 @@ export default {
     ],
   },
 }
+
+export const tag_colors = {
+  'code': 'orange',
+  'tool': 'green',
+  'life hack': 'yellow',
+  'app': 'red',
+  'physics': 'magenta',
+  'learning': 'lightblue',
+  'text': 'olive',
+}
+
+export const bookmarks = [
+  {
+    title: 'Observable HQ: interactive javascript notebooks in the browser',
+    url: 'https://beta.observablehq.com/',
+    site: 'beta.observablehq.com',
+    tags: ['code', 'tool', 'app'],
+  },
+  {
+    title: 'Instruction for timed breathing',
+    url: 'https://www.vandenoever.info/breathe.html',
+    site: 'www.vandenoever.info',
+    tags: ['life hack', 'tool', 'app'],
+  },
+  {
+    title: 'The Feynman Lectures on Physics',
+    url: 'http://www.feynmanlectures.caltech.edu/',
+    site: 'www.feynmanlectures.caltech.edu',
+    tags: ['physics', 'learning', 'text'],
+  },
+  {
+    title: 'Uncoiling the spiral: Maths and hallucinations',
+    url: 'https://plus.maths.org/content/uncoiling-spiral-maths-and-hallucinations',
+    site: 'plus.maths.org',
+    tags: ['physics', 'text'],
+  },
+
+]
