@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 import { tag_colors } from '../personal.config'
@@ -31,12 +31,12 @@ export const Tag = styled.button`
   font-size: 0.6em;
   padding: 0.25em 0.5em;
   border-radius: 20em;
-  color: white;
+  color: ${props => props.text_color};
   background-color: ${props => props.color};
   cursor: pointer;
 `
 export default props => (
-  <Container>
+  <Container style={props.style}>
     <Title href={props.url}>{props.title}</Title>
     <br />
     <Site href={'http://' + props.site}>{props.site}</Site>
@@ -44,7 +44,8 @@ export default props => (
       {props.tags.map((tag, i) => (
         <Tag 
           onClick={() => props.onClickTag(tag)} 
-          color={tag_colors[tag]} 
+          color={props.tag_colors[tag]}
+          text_color={props.text_color}
           key={i}
         >
           {tag}

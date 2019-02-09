@@ -46,7 +46,13 @@ export default class ImageZoomable extends Component {
   render() {
     return (
 			<Frame onClick={this.toggle_zoom}>
-				{ this.state.zoomed ? <ZoomedImage src={this.props.src} /> : null }
+				{
+					this.state.zoomed ? 
+					<ZoomedImage 
+						src={this.props.big ? this.props.big : this.props.src} 
+					/> : 
+					null 
+				}
 				<Image style={this.props.style} src={this.props.src} /> 
 			</Frame>
     )

@@ -1,6 +1,14 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 
+let fade_in = keyframes`
+  from { opacity: 0.25; }
+  to { opacity: 1; }
+`
+let fade_out = keyframes`
+  from { opacity: 1; }
+  to { opacity: 0.25; }
+`
 const Toggle = styled.div`
   position: fixed;
   bottom: 0;
@@ -11,7 +19,12 @@ const Toggle = styled.div`
   background-color: ${props => props.isDarkModeOn ? '#fafafa' : '#1a1a1a'};
   border-radius: 1.5em;
   cursor: pointer;
-  box-shadow: 0 .2em hsl(0, 0%, 50%) inset, 0 0 1em 1em ${props => props.isDarkModeOn ? '#1a1a1a' : '#fafafa'};
+  box-shadow: 0 .2em hsl(0, 0%, 50%) inset; 
+  animation: 0.25s linear ${fade_out} forwards;
+  &:hover{
+    animation: 0.25s linear ${fade_in} forwards;
+    box-shadow: 0 0 1em 1em ${props => props.isDarkModeOn ? '#1a1a1a' : '#fafafa'};
+  }
 `
 
 const Button = styled.div`

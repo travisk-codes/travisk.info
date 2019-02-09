@@ -1,16 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Pg from '../components/Page'
+import Page from '../components/Page'
 
-const Page = styled(Pg)`
+import { contact_info } from '../personal.config'
+
+const ContactPage = styled(Page)`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  align-items: flex-start;
 `
 const Link = styled.a`
-  display: inline-flex;
-  flex: 1 1 auto;
+  display: flex;
+  flex: 0 1 auto;
   color: ${props => props.text_color};
   background-color: ${props => props.bg_color};
   padding: 0.5em;
@@ -18,7 +21,7 @@ const Link = styled.a`
   font-size: 1.25em;
   justify-content: center;
   border-radius: 0.25em;
-  width: 10em;
+  width: 9em;
   text-decoration: none;
   letter-spacing: 0.025em;
   &:hover {
@@ -27,61 +30,18 @@ const Link = styled.a`
   }
 `
 
-const info = [
-  {
-    name: 'email',
-    color1: 'black',
-    color2: 'white',
-    url: 'me@travisk.info',
-  },
-  {
-    name: 'github',
-    color1: '#0062d9',
-    color2: '#f6f8fa',
-    url: 'https://github.com/tdkohlbeck',
-  },
-  {
-    name: 'facebook',
-    color1: 'white',
-    color2: '#4a65a2',
-    url: 'https://www.facebook.com/travisdkohlbeck',
-  },
-  {
-    name: 'twitter',
-    color1: 'white',
-    color2: '#039ff5',
-    url: 'https://twitter.com/good_travisk',
-  },
-  {
-    name: 'linkedIn',
-    color1: 'white',
-    color2: '#0073bb',
-    url: 'https://www.linkedin.com/in/traviskohlbeck',
-  },
-  {
-    name: 'twitch',
-    color1: 'white',
-    color2: '#4b347d',
-    url: 'https://www.twitch.tv/watch_travisk_do_',
-  },
-  {
-    name: 'soundcloud',
-    color1: 'white',
-    color2: '#ff5400',
-    url: 'https://soundcloud.com/tdkohlbeck',
-  },
-  {
-    name: 'last.fm',
-    color1: 'white',
-    color2: '#bc0000',
-    url: 'https://www.last.fm/user/Thadius_Dean',
-  },
-]
+
 
 export default props => (
-  <Page palette={props.palette}>
-    {info.map((info, i) => (
-      <Link key={i} href={info.url} text_color={ i ? info.color1 : props.palette.bg} bg_color={ i ? info.color2 : props.palette.text}>{info.name}</Link>
+  <ContactPage palette={props.palette}>
+    {contact_info.map((info, i) => (
+      <Link 
+        key={i} 
+        href={info.url}
+        text_color={ i ? info.color1 : props.palette.bg}
+        bg_color={ i ? info.color2 : props.palette.text}>
+        {info.name}
+      </Link>
     ))}
-  </Page>
+  </ContactPage>
 )

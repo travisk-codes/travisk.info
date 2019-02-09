@@ -11,3 +11,11 @@ TODOS:
 * thumbnail version of images
 * image captions?
 * contact
+* weird squish behavior of resume languages bullet point
+
+IDEAS:
+* mybookmarks.app
+  * build association between page scrape and tags
+  * make api endpoint that accepts a url (or more) and adds to page
+  * make small fetch() script that can turn into a button/addon
+  * llc, will never sell your data, donate button -> profit

@@ -41,7 +41,7 @@ export default props => (
   <Container>
 
     <ImageFrame>
-      <Image style={props.style} src={props.img} />
+      <Image style={props.style} src={props.img} big={props.big} />
     </ImageFrame>
 
     <Text>
