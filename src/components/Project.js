@@ -34,6 +34,12 @@ const Text = styled.div`
 `
 const Title = styled.span`
   font-size: 2em;
+  padding-right: .25em;
+`
+const Subtitle = styled.span`
+  font-size: 1.5em;
+  color: grey;
+  font-weight: 100;
 `
 const Description = styled.span`
 `
@@ -46,6 +52,7 @@ export default props => (
 
     <Text>
       <Title>{props.title}</Title>
+      <Subtitle>{props.subtitle}</Subtitle>
       <br />
       <Description>{props.description}</Description>
     </Text>

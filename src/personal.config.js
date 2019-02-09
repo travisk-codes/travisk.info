@@ -197,7 +197,7 @@ export const bookmarks = [
 export const projects = [
   {
     title: 'Datum',
-    subtitle: '(web app)',
+    subtitle: 'web app',
     img: 'datum.jpg',
     big: null,
     description: 'A personal metrics management platform. Currently features easy tag-value entry, tag name auto-complete, and entry edit & deletion.',
@@ -205,7 +205,7 @@ export const projects = [
   },
   {
     title: 'Datum',
-    subtitle: '(CLI)',
+    subtitle: 'CLI',
     img: 'datum-cli.png',
     big: 'datum-cli-big.png',
     description: 'A command line program to create/read/update/delete datum entries. Features a time-tracking mode and a SMS/chatbot interface.',
