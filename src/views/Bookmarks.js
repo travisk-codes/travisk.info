@@ -51,7 +51,7 @@ class Bookmarks extends Component {
   constructor() {
     super()
     this.state = {
-      visible_tags: Object.keys(tag_colors),
+      visible_tags: this.get_set_of_tag_names_from_bookmarks(bookmarks),
     }
     this.light_colors = get_color_scheme(false)
     this.dark_colors = get_color_scheme(true)
@@ -62,28 +62,36 @@ class Bookmarks extends Component {
   
   toggle(tag) {
     let visible = this.state.visible_tags
+    visible.has(tag) ? visible.delete(tag) : visible.add(tag)
     this.setState({
-      visible_tags: ( 
-        visible.includes(tag) ?
-        visible.filter(t => t !== tag) :
-        visible.concat(tag)
-        )
+      visible_tags: visible,
       })
     }
   
   toggle_all() {
-    this.state.visible_tags.length ? 
-    this.setState({visible_tags: []}) :
-    this.setState({visible_tags: Object.keys(tag_colors)})
+    this.state.visible_tags.size
+    ? 
+    this.setState({visible_tags: new Set()})
+    :
+    this.setState({visible_tags: this.get_set_of_tag_names_from_bookmarks(bookmarks)})
   }
 
   toggle_only(tag) {
-    this.setState({visible_tags: [tag]})
+    this.setState({visible_tags: new Set([tag])})
   }
 
-  get_list_of_tags
+  get_set_of_tag_names_from_bookmarks(bookmarks) {
+    let set_of_tag_names = new Set()
+    bookmarks.map(bookmark => (
+      bookmark.tags.map(tag => (
+        set_of_tag_names.add(tag)
+      ))
+    ))
+    return set_of_tag_names
+  }
     
   render() {
+    console.log(this.state.visible_tags)
     const TagBar = props => {
       const ToggleAllButton = props => (
         <Tag
@@ -105,7 +113,7 @@ class Bookmarks extends Component {
             key={tag_name}
             color={this.props.palette.theme === 'dark' ? this.dark_colors[tag_name] : this.light_colors[tag_name]}
             onClick={() => this.toggle(tag_name)}
-            style={{opacity: (this.state.visible_tags.includes(tag_name) ? 1 : 0.33), color: this.props.palette.bg}} 
+            style={{opacity: (this.state.visible_tags.has(tag_name) ? 1 : 0.33), color: this.props.palette.bg}} 
           >
             {tag_name}
           </Tag>
@@ -127,30 +135,30 @@ class Bookmarks extends Component {
       <BookmarksPage palette={this.props.palette}>
         <TagBar />
         {
-          bookmarks.map((bookmark, i) => (
-            bookmark.tags.filter(t => this.state.visible_tags.includes(t)).length
-            ?
-            <Bookmark 
-              {...bookmark}
-              is_highlighted={bookmark.tags.sort().toString() === this.state.visible_tags.sort().toString()}
-              highlight_color={this.props.palette.theme === 'dark' ? 'blue' : 'yellow'}
-              key={i}>
-              {bookmark.tags.map((tag, i) => (
-                <Tag
+          bookmarks.map((bookmark, i) => {
+            const bookmark_has_visible_tags = bookmark.tags.filter(t => this.state.visible_tags.has(t))
+            console.log(bookmark_has_visible_tags)
+            if (bookmark_has_visible_tags.length) return (
+              <Bookmark 
+                {...bookmark}
+                is_highlighted={bookmark.tags.sort().toString() === [...this.state.visible_tags].sort().toString()}
+                highlight_color={this.props.palette.theme === 'dark' ? 'blue' : 'yellow'}
+                key={i}
+              >
+                {bookmark.tags.map((tag, i) => (
+                  <Tag
                   onClick={() => this.toggle_only(tag)}
                   color={this.props.palette.theme === 'dark' ? this.dark_colors[tag] : this.light_colors[tag] }
                   text_color={this.props.palette.bg}
                   key={i}
-                  style={{ opacity: (this.state.visible_tags.includes(tag) ? 1 : 0.25)}}
-                >
-                  {tag}
-                </Tag>
-              ))}
-
-            </Bookmark> 
-            :
-            null
-          ))
+                  style={{ opacity: (this.state.visible_tags.has(tag) ? 1 : 0.25)}}
+                  >
+                    {tag}
+                  </Tag>
+                ))}
+              </Bookmark> 
+            )
+          })
         }
       </BookmarksPage>
     )
