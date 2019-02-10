@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { tag_colors } from '../personal.config'
-
 const Container = styled.div`
   padding-bottom: 1em;
 `
@@ -18,12 +16,10 @@ const Site = Title.extend`
   color: grey;
   font-weight: 100;
   font-size: .8em;
-
+  padding-left: 0.5em;
 `
 const Tags = styled.div`
   display: inline-flex;
-  margin-left: 0.5em;
-
 `
 export const Tag = styled.button`
   border: none;
@@ -37,20 +33,11 @@ export const Tag = styled.button`
 `
 export default props => (
   <Container style={props.style}>
-    <Title href={props.url}>{props.title}</Title>
-    <br />
+    <Title style={{backgroundColor: (props.is_highlighted ? props.highlight_color || 'yellow' : 'none')}} href={props.url}>{props.title}</Title>
     <Site href={'http://' + props.site}>{props.site}</Site>
+    <br />
     <Tags>
-      {props.tags.map((tag, i) => (
-        <Tag 
-          onClick={() => props.onClickTag(tag)} 
-          color={props.tag_colors[tag]}
-          text_color={props.text_color}
-          key={i}
-        >
-          {tag}
-        </Tag>
-      ))}
+      {props.children}
     </Tags>
   </Container>
 )

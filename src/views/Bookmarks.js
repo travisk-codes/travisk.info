@@ -17,7 +17,7 @@ const Bar = styled.div`
 
   button {
     flex: 1 1 auto;
-    border-radius: 0.25em;
+    border-radius: 1em;
     font-size: 0.9em;
     margin-bottom: 0.5em;
   }
@@ -80,6 +80,8 @@ class Bookmarks extends Component {
   toggle_only(tag) {
     this.setState({visible_tags: [tag]})
   }
+
+  get_list_of_tags
     
   render() {
     const TagBar = props => {
@@ -126,17 +128,27 @@ class Bookmarks extends Component {
         <TagBar />
         {
           bookmarks.map((bookmark, i) => (
-            bookmark.tags.filter(t => this.state.visible_tags.includes(t)).length ?
+            bookmark.tags.filter(t => this.state.visible_tags.includes(t)).length
+            ?
             <Bookmark 
               {...bookmark}
-              tag_colors={ this.props.palette.theme === 'dark' ? this.dark_colors : this.light_colors }
-              onClickTag={this.toggle_only}
-              key={i}
-              style={{
-                color: (bookmark.tags.sort().toString() === this.state.visible_tags.sort().toString() ? 'red' : null),
-              }}
-              text_color={this.props.palette.bg}
-            /> :
+              is_highlighted={bookmark.tags.sort().toString() === this.state.visible_tags.sort().toString()}
+              highlight_color={this.props.palette.theme === 'dark' ? 'blue' : 'yellow'}
+              key={i}>
+              {bookmark.tags.map((tag, i) => (
+                <Tag
+                  onClick={() => this.toggle_only(tag)}
+                  color={this.props.palette.theme === 'dark' ? this.dark_colors[tag] : this.light_colors[tag] }
+                  text_color={this.props.palette.bg}
+                  key={i}
+                  style={{ opacity: (this.state.visible_tags.includes(tag) ? 1 : 0.25)}}
+                >
+                  {tag}
+                </Tag>
+              ))}
+
+            </Bookmark> 
+            :
             null
           ))
         }
