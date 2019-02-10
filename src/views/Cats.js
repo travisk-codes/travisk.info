@@ -11,10 +11,6 @@ const Page = styled.div`
   padding: 1em;
   background-color: ${props => props.bg_color};
 `
-const Pic = styled.img`
-  display: block;
-  max-width: 100%;
-`
 const PicFrame = styled.div`
   position: relative;
   width: 10em;
@@ -50,39 +46,15 @@ const ZoomedFrame = PicFrame.extend`
   `}
 `
 
-class Home extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      selectedPic: 1,
-      zoomed: false,
-    }
-    this.selectPic = this.selectPic.bind(this)
-  }
-
-  selectPic(i) {
-    this.setState({
-      selectedPic: i,
-      zoomed: !this.state.zoomed,
-    })
-  }
-
-  render() {
-    let Pics = new Array(14).fill().map((_, i) => (
-      <PicFrame key={i}>
-        <Img src={`cat-pics/${i+1}.jpg`} />
-      </PicFrame>
-    ))
-    let { selectedPic, zoomed } = this.state
-    return (
-      <Page bg_color={this.props.palette.bg}>
-        {Pics}
-        <ZoomedFrame zoomed={zoomed} onClick={() => this.selectPic(0)}>
-          <Pic src={`cat-pics/${selectedPic}.jpg`} />
-        </ZoomedFrame>
-      </Page>
-    )
-  }
+export default props => {
+  let Pics = new Array(14).fill().map((_, i) => (
+    <PicFrame key={i}>
+      <Img src={`cat-thumbnails/${i+1}.jpg`} big={`cat-pics/${i+1}.jpg`} />
+    </PicFrame>
+  ))
+  return (
+    <Page bg_color={props.palette.bg}>
+      {Pics}
+    </Page>
+  )
 }
-
-export default Home;
