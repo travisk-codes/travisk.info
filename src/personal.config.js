@@ -71,18 +71,6 @@ export default {
   },
 }
 
-export const tag_colors = {
-  'code': 'orange',
-  'tool': 'green',
-  'life hack': 'yellow',
-  'app': 'red',
-  'physics': 'magenta',
-  'learning': 'lightblue',
-  'text': 'olive',
-  'math': 'salmon',
-  'misc': 'brown',
-}
-
 export const bookmarks = [
   {
     title: 'Observable HQ: interactive javascript notebooks in the browser',
