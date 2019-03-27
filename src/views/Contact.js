@@ -40,7 +40,7 @@ export default props => (
         href={info.url}
         text_color={ i ? info.color1 : props.palette.bg}
         bg_color={ i ? info.color2 : props.palette.text}
-        style={{border: (info.name == 'github' ? `1px solid ${info.color1}` : 'none')}}>
+        style={{border: (info.name === 'github' ? `1px solid ${info.color1}` : 'none')}}>
         {info.name}
       </Link>
     ))}

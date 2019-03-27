@@ -157,6 +157,9 @@ class Bookmarks extends Component {
                 ))}
               </Bookmark> 
             )
+            else {
+              return null
+            }
           })
         }
       </BookmarksPage>
