@@ -12,6 +12,7 @@ TODOS:
 * image captions?
 * contact
 * weird squish behavior of resume languages bullet point
+* clean up math tutor repo and make code public
 
 IDEAS:
 * mybookmarks.app

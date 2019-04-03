@@ -43,6 +43,18 @@ const Subtitle = styled.span`
 `
 const Description = styled.span`
 `
+const Link = styled.a`
+  text-decoration: none;
+  font-size: 1.25em;
+  font-weight: 100;
+  color: grey;
+  padding-bottom: .1em;
+  margin-right: .5em;
+  border-bottom: 1px dashed;
+  &:hover {
+    color: unset;
+  }
+`
 export default props => (
   <Container>
 
@@ -55,6 +67,12 @@ export default props => (
       <Subtitle>{props.subtitle}</Subtitle>
       <br />
       <Description>{props.description}</Description>
+      <br />
+      {
+        props.links ?
+        props.links.map(l => (<Link href={l.url}>{l.name}</Link>)) :
+        ''
+      }
     </Text>
 
   </Container>
