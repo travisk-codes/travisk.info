@@ -63,9 +63,6 @@ class Home extends Component {
         <Slink color={colors[1]} to='/links'>
           <h2>Bookmarks</h2>
         </Slink>
-        <Slink color={colors[2]} to='/backgrounds'>
-          <h2>Wallpapers</h2>
-        </Slink>
       </LeftMenu>
 
 
