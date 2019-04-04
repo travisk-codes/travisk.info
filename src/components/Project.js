@@ -52,7 +52,7 @@ const Link = styled.a`
   margin-right: .5em;
   border-bottom: 1px dashed;
   &:hover {
-    color: unset;
+    border-bottom: 1px dashed white;
   }
 `
 export default props => (
