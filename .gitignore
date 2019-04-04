@@ -23,4 +23,5 @@ package-lock.json
 personal.config.js
 
 /public/cat-pics
+/public/cat-thumbnails
 /src/personal.config.js
