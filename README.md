@@ -22,20 +22,25 @@ IDEAS:
   * make small fetch() script that can turn into a button/addon
   * llc, will never sell your data, donate button -> profit
 
-review:
-chrome mobile:
+## review:
+
+### chrome mobile:
+
 home:
-* kinda small
-~~* blue highlight on link tap~~
-* blue link tap TDK and toggle
-* dark mode off
+* ~~kinda small~~
+* ~~blue highlight on link tap~~
+* ~~blue link tap TDK and toggle~~
+* ~~dark mode off~~
+
 cat pics:
 * big pics slow
-* missing pic bug (have to navigate to)
-* toggle adjust? or just fade?
+* ~~missing pic bug (have to navigate to)~~
+* ~~toggle adjust? or just fade?~~
+
 bookmarks:
-* ALL/NONE
-* links new tab
+* ~~ALL/NONE~~
+* ~~links new tab~~
+
 contact:
 * links new tab
 projects:
@@ -44,6 +49,6 @@ resume:
 * tech lists line breaks
 * smaller hearts?
 
-chrome chromeos:
+###chrome chromeos:
 projects:
 * project horz scroll

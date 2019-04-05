@@ -101,13 +101,12 @@ class Bookmarks extends Component {
             border: '1px solid' + this.props.palette.text,
             color: this.props.palette.text,
           }}>
-          {(this.state.visible_tags.length ? 'NONE' : 'ALL')}
+          {(this.state.visible_tags.size ? 'NONE' : 'ALL')}
         </Tag>
       )
       const tags = []
       const tag_names = [...this.get_set_of_tag_names_from_bookmarks(bookmarks)]
       tag_names.forEach(tag_name => {
-        console.log(tag_name)
         tags.push(
           <Tag 
             key={tag_name}

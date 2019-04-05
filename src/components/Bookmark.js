@@ -33,8 +33,14 @@ export const Tag = styled.button`
 `
 export default props => (
   <Container style={props.style}>
-    <Title style={{backgroundColor: (props.is_highlighted ? props.highlight_color || 'yellow' : 'none')}} href={props.url}>{props.title}</Title>
-    <Site href={'http://' + props.site}>{props.site}</Site>
+    <Title 
+      style={{backgroundColor: (props.is_highlighted ? props.highlight_color || 'yellow' : 'none')}} 
+      href={props.url}
+      target='_blank'
+    >
+      {props.title}
+      </Title>
+    <Site href={'http://' + props.site} target='_blank'>{props.site}</Site>
     <br />
     <Tags>
       {props.children}
