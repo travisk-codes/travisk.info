@@ -64,7 +64,6 @@ const Icon = styled.svg`
 const Content = Block.extend`
   position: relative;
   display: block;
-  /*height: 100%;*/
   font-size: 1.25em;
   padding-top: 4em;
   background-color: ${props => props.bg_color}

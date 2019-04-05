@@ -26,7 +26,7 @@ const PicFrame = styled.div`
 export default props => {
   let Pics = new Array(14).fill().map((_, i) => (
     <PicFrame key={i}>
-      <Img src={`/cat-thumbnails/${i+1}.jpg`} big={`cat-pics/${i+1}.jpg`} />
+      <Img src={`/cat-thumbnails/${i+1}.jpg`} big={`/cat-pics/${i+1}.jpg`} />
     </PicFrame>
   ))
   return (

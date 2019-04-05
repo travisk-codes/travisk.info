@@ -31,6 +31,7 @@ const StyledLink = styled(Link)`
   &:hover {
     transform: scale(1.1);
   }
+  -webkit-tap-highlight-color: transparent;
 `
 const Logo = styled.svg`
   stroke: ${props => props.color};

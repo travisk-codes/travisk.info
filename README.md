@@ -27,13 +27,23 @@ chrome mobile:
 home:
 * kinda small
 ~~* blue highlight on link tap~~
+* blue link tap TDK and toggle
 * dark mode off
 cat pics:
 * big pics slow
+* missing pic bug (have to navigate to)
 * toggle adjust? or just fade?
 bookmarks:
 * ALL/NONE
 * links new tab
 contact:
 * links new tab
-* 
+projects:
+* cli outlines
+resume:
+* tech lists line breaks
+* smaller hearts?
+
+chrome chromeos:
+projects:
+* project horz scroll

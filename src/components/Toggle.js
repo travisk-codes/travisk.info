@@ -23,8 +23,9 @@ const Toggle = styled.div`
   animation: 0.25s linear ${fade_out} forwards;
   &:hover{
     animation: 0.25s linear ${fade_in} forwards;
-    box-shadow: 0 0 1em 1em ${props => props.isDarkModeOn ? '#1a1a1a' : '#fafafa'};
+    box-shadow: 0 0 1em 1.5em ${props => props.isDarkModeOn ? '#1a1a1a' : '#fafafa'};
   }
+  -webkit-tap-highlight-color: transparent;
 `
 
 const Button = styled.div`

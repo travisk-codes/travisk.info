@@ -7,5 +7,5 @@ html, body, #root {
 }
 
 html {
-  font-size: calc(.4em + 1vw);
+  font-size: calc(.5em + 1vw);
 }
