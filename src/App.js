@@ -50,6 +50,7 @@ const StyledLink = styled(Link)`
   &:hover {
     transform: scale(1.15);
   }
+  -webkit-tap-highlight-color: transparent;
 `
 const Icon = styled.svg`
   display: flex;
@@ -72,7 +73,7 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      darkMode: true,
+      darkMode: false,
       colors: getRandomHslColorScheme(4)
     }
     this.toggleDarkMode = this.toggleDarkMode.bind(this)

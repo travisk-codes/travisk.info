@@ -45,7 +45,7 @@ const Description = styled.span`
 `
 const Link = styled.a`
   text-decoration: none;
-  font-size: 1.25em;
+  font-size: 1.125em;
   font-weight: 100;
   color: grey;
   padding-bottom: .1em;

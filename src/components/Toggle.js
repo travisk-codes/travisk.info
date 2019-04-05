@@ -15,7 +15,7 @@ const Toggle = styled.div`
   right: 0;
   width: 5em;
   height: 3em;
-  margin: 2em;
+  margin: 1em;
   background-color: ${props => props.isDarkModeOn ? '#fafafa' : '#1a1a1a'};
   border-radius: 1.5em;
   cursor: pointer;
