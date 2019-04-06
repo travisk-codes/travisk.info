@@ -70,7 +70,7 @@ export default props => (
       <br />
       {
         props.links ?
-        props.links.map(l => (<Link href={l.url}>{l.name}</Link>)) :
+        props.links.map(l => (<Link target='_blank' href={l.url}>{l.name}</Link>)) :
         ''
       }
     </Text>

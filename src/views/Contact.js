@@ -38,6 +38,7 @@ export default props => (
       <Link 
         key={i} 
         href={info.url}
+        target='_blank'
         text_color={ i ? info.color1 : props.palette.bg}
         bg_color={ i ? info.color2 : props.palette.text}
         style={{border: (info.name === 'github' ? `1px solid ${info.color1}` : 'none')}}>

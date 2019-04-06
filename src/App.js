@@ -76,6 +76,7 @@ class App extends Component {
       colors: getRandomHslColorScheme(4)
     }
     this.toggleDarkMode = this.toggleDarkMode.bind(this)
+    this.NoMatch = this.NoMatch.bind(this)
   }
 
   toggleDarkMode() {
@@ -85,6 +86,14 @@ class App extends Component {
     })
   }
 
+  NoMatch(location) {
+    return (
+      <div>
+        404 | {location.pathname} does not exist
+      </div>
+    )
+  }
+
   render() {
     const palette = this.state.darkMode ? dark_palette : light_palette
     return (
@@ -92,12 +101,13 @@ class App extends Component {
         <Content bg_color={palette.bg}>
           <Switch>
             <Route exact path='/'><Home palette={palette} colors={this.state.colors} /></Route>
-            <Route path='/about'><About palette={palette}/></Route>
-            <Route path='/contact'><Contact palette={palette} /></Route>
-            <Route path='/projects'><Projects palette={palette} /></Route>
-            <Route path='/resume'><Resume palette={palette} /></Route>
-            <Route path='/cat-pics'><Cats palette={palette} /></Route>
-            <Route path='/links'><Bookmarks palette={palette} /></Route>
+            <Route exact path='/about'><About palette={palette}/></Route>
+            <Route exact path='/contact'><Contact palette={palette} /></Route>
+            <Route exact path='/projects'><Projects palette={palette} /></Route>
+            <Route exact path='/resume'><Resume palette={palette} /></Route>
+            <Route exact path='/cat-pics'><Cats palette={palette} /></Route>
+            <Route exact path='/links'><Bookmarks palette={palette} /></Route>
+            <Route component={this.NoMatch} />
           </Switch>
         </Content>
         <Navbar 

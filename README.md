@@ -42,9 +42,10 @@ bookmarks:
 * ~~links new tab~~
 
 contact:
-* links new tab
+* ~~links new tab~~
 projects:
-* cli outlines
+* ~~cli outlines~~
+* LOOK AT OTHER SITES
 resume:
 * tech lists line breaks
 * smaller hearts?
