@@ -31,6 +31,7 @@ const Text = styled.div`
   width: 10em;
   flex: 1 1 auto;
   margin-top: -.5em;
+  overflow: hidden;
 `
 const Title = styled.span`
   font-size: 2em;
