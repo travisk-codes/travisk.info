@@ -52,4 +52,4 @@ resume:
 
 ###chrome chromeos:
 projects:
-* project horz scroll
+* ~~project horz scroll~~

@@ -107,7 +107,8 @@ class App extends Component {
             <Route exact path='/resume'><Resume palette={palette} /></Route>
             <Route exact path='/cat-pics'><Cats palette={palette} /></Route>
             <Route exact path='/links'><Bookmarks palette={palette} /></Route>
-            <Redirect from='/mathtutor' to='https://travisk.info/mathtutor' />
+            <Redirect from='/mathtutor' to='/mathtutor' />
+            <Redirect from='/resume-sas-20029284' to='/resume-sas-20029284' />
             <Route component={this.NoMatch} />
           </Switch>
         </Content>
