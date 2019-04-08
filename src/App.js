@@ -54,6 +54,9 @@ const StyledLink = styled(Link)`
   &:focus {
     outline: none;
   }
+  &:active {
+    background-color: none;
+  }
 `
 const Icon = styled.svg`
   display: flex;
