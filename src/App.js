@@ -51,7 +51,9 @@ const StyledLink = styled(Link)`
     transform: scale(1.15);
   }
   -webkit-tap-highlight-color: transparent;
-  border: 0;
+  &:focus {
+    outline: none;
+  }
 `
 const Icon = styled.svg`
   display: flex;
