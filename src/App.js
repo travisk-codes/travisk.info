@@ -72,7 +72,7 @@ const Content = Block.extend`
   display: block;
   overflow-x: hidden;
   font-size: 1.25em;
-  padding-top: 4em;
+  padding-top: ${window.location.search ? 0 : '4em'};
   background-color: ${props => props.bg_color}
 `
 class App extends Component {
@@ -102,6 +102,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(window.location.search)
     const palette = this.state.darkMode ? dark_palette : light_palette
     return (
       <Fragment>
@@ -119,7 +120,8 @@ class App extends Component {
             <Route component={this.NoMatch} />
           </Switch>
         </Content>
-        <Navbar 
+        <Navbar
+          style={{border: '1px solid red'}}
           left_color={palette.primary} 
           right_color={palette.secondary}
           logo_color={palette.signature}

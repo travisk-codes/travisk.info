@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import Svg from '../svg'
 
 const Block = styled.div`
-  display: flex;
+  display: ${window.location.search? 'none' : 'flex'};
   justify-content: center;
   align-items: center;
 
