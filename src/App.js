@@ -53,7 +53,7 @@ const StyledLink = styled(Link)`
 	display: flex;
 	transition: 0.025s linear;
 	&:hover {
-		transform: scale(1.15);
+		transform: scale(0.95);
 	}
 	-webkit-tap-highlight-color: transparent;
 	&:focus {

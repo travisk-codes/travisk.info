@@ -22,7 +22,7 @@ const Topbar = Block.extend`
 
 	background: linear-gradient(
 		to right,
-		${props => props.left_color},
+		${props => props.right},
 		${props => props.right_color}
 	);
 	overflow: visible;
@@ -32,7 +32,7 @@ const StyledLink = styled(Link)`
 	display: flex;
 	transition: 0.05s linear;
 	&:hover {
-		transform: scale(1.1);
+		transform: scale(0.95);
 	}
 	-webkit-tap-highlight-color: transparent;
 `
