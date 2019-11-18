@@ -23,18 +23,26 @@ here's a list of projects i can contribute to possibly!
 
 const about_md = `
 ## Thanks for stopping by!
-<br />
-My name is Travis. I like building things and working with numbers. Please feel free to hire me.
-<br />
-<br />
-I live and grew up in Raleigh, North Carolina, and studied Mechanical Engineering at Georgia Tech in Atlanta. I pivoted to web development after working at a tech company in Silicon Valley.
-<br />
-<br />
-I otherwise enjoy physics, running, and keeping up with current events.
-`
 
+I am a novice web developer and designer looking for an entry-level position with opportunity to learn and grow. I work with standard web technologies, modern front-end tools & libraries, and server backends.
+
+<br />
+I work with code, but my degree is engineering, so I know how to solve problems and coordinate with teams.
+
+<br />
+I have experience working on enterprise codebases, fixing consumer-facing production code, and building internal tools for coworkers.
+
+<br />
+Other hobbies include learning about space & physics, mainstream auteur films, electro-indie rock-pop, and mindfulness meditation.
+`
 
 // DOMPurify
 export default props => (
-  <Page palette={props.palette} dangerouslySetInnerHTML={{ __html: new showdown.Converter().makeHtml(about_md) }} />
+	<Page
+		palette={props.palette}
+		style={{ margin: '0 5em', textAlign: 'justify' }}
+		dangerouslySetInnerHTML={{
+			__html: new showdown.Converter().makeHtml(about_md),
+		}}
+	/>
 )
