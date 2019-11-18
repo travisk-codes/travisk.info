@@ -1,11 +1,13 @@
 li {
-  margin-left: 1.5em;
+	margin-left: 1.5em;
 }
 
-html, body, #root {
-  height: 100%;
+html,
+body,
+#root {
+	height: 100%;
 }
 
 html {
-  font-size: calc(.5em + 1vw);
+	font-size: calc(0.5em + 1vw);
 }
