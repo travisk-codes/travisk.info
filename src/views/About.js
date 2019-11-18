@@ -40,7 +40,11 @@ Other hobbies include learning about space & physics, mainstream auteur films, e
 export default props => (
 	<Page
 		palette={props.palette}
-		style={{ margin: '0 5em', textAlign: 'justify' }}
+		style={{
+			width: '30em',
+			textAlign: 'justify',
+			margin: '0 auto',
+		}}
 		dangerouslySetInnerHTML={{
 			__html: new showdown.Converter().makeHtml(about_md),
 		}}

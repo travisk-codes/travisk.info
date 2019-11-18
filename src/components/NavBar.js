@@ -25,7 +25,6 @@ const Topbar = Block.extend`
 		${props => props.left_color},
 		${props => props.right_color}
 	);
-	box-shadow: 0 1px 1px ${props => props.shadow_color};
 	overflow: visible;
 	align-items: stretch;
 `
