@@ -85,7 +85,7 @@ class App extends Component {
 		super()
 		this.state = {
 			darkMode: false,
-			colors: getRandomHslColorScheme(4),
+			colors: getRandomHslColorScheme(8),
 		}
 		this.toggleDarkMode = this.toggleDarkMode.bind(this)
 		this.NoMatch = this.NoMatch.bind(this)

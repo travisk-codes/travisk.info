@@ -5,70 +5,97 @@ import { Link } from 'react-router-dom'
 import { getRandomHslColorScheme } from '../utils'
 
 const Page = styled.div`
-  padding: 1.25em;
+	padding: 1.25em;
 `
 const RightMenu = styled.div`
-  z-index: 1;
-  position: absolute;
-  top: 4em;
-  right: 0;
-  padding: 1.25em;
+	position: absolute;
+	top: 4em;
+	right: 0;
+	padding: 1.25em;
 `
-const LeftMenu = styled.div`
-
-`
+const LeftMenu = styled.div``
 const Slink = styled(Link).attrs(({ color }) => ({
-  color: color || 'red',
+	color: color || 'red',
 }))`
-  position: relative;
+	position: relative;
   text-decoration: none;
-  color: ${props => props.color};
-  &:hover {
-    color: white;
-    > * {
-      padding: 0 0.5em;
-      background-color: ${props => props.color };
-      border-radius: .1em;
-      width: fit-content;
-    }
-  }
+  right: 0
+	color: ${props => props.color};
+	&:hover {
+		color: white;
+		> * {
+			padding: 0 0.5em;
+			background-color: ${props => props.color};
+			border-radius: 0.1em;
+			width: fit-content;
+		}
+	}
 `
 const RightLink = Slink.extend`
-  text-align: right;
+	text-align: right;
 `
 
 class Home extends Component {
-  render() {
-    const colors = getRandomHslColorScheme(3, (this.props.palette.theme === 'dark' ? true : false))
-    return (
-      <Page>
-        <RightMenu>
-          <RightLink color={this.props.colors[0]} to='/about'>
-            <h2>About Me</h2>
-          </RightLink>
-          <RightLink color={this.props.colors[1]} to='/contact'>
-            <h2>Contact</h2>
-          </RightLink>
-          <RightLink color={this.props.colors[2]} to='/projects'>
-            <h2>Projects</h2>
-          </RightLink>
-          <RightLink color={this.props.colors[3]} to='/resume'>
-            <h2>Resume</h2>
-          </RightLink>
-        </RightMenu>
-        <LeftMenu>
-        <Slink color={colors[0]} to='/cat-pics'>
-          <h2>Cat Pictures</h2>
-        </Slink>
-        <Slink color={colors[1]} to='/links'>
-          <h2>Bookmarks</h2>
-        </Slink>
-      </LeftMenu>
-
-
-      </Page>
-    )
-  }
+	render() {
+		const colors = getRandomHslColorScheme(
+			4,
+			this.props.palette.theme === 'dark' ? true : false
+		)
+		return (
+			<Page>
+				<RightMenu>
+					<RightLink
+						color={this.props.colors[0]}
+						to='/about'
+					>
+						<h2>About Me</h2>
+					</RightLink>
+					<RightLink
+						color={this.props.colors[1]}
+						to='/contact'
+					>
+						<h2>Contact</h2>
+					</RightLink>
+					<RightLink
+						color={this.props.colors[2]}
+						to='/projects'
+					>
+						<h2>Projects</h2>
+					</RightLink>
+					<RightLink
+						color={this.props.colors[3]}
+						to='/resume'
+					>
+						<h2>Resume</h2>
+					</RightLink>
+					<RightLink
+						color={this.props.colors[4]}
+						to='/cat-pics'
+					>
+						<h2>Cat Pictures</h2>
+					</RightLink>
+					<RightLink
+						color={this.props.colors[5]}
+						to='/links'
+					>
+						<h2>Bookmarks</h2>
+					</RightLink>
+					<RightLink
+						color={this.props.colors[6]}
+						to='https://twitter.com/3b1bScreensBot'
+					>
+						<h2>Twitter Bot</h2>
+					</RightLink>
+					<RightLink
+						color={this.props.colors[7]}
+						to='https://simple-english-checker.netlify.com'
+					>
+						<h2>Simple English</h2>
+					</RightLink>
+				</RightMenu>
+			</Page>
+		)
+	}
 }
 
-export default Home;
+export default Home
