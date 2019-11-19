@@ -32,6 +32,23 @@ const Slink = styled(Link).attrs(({ color }) => ({
 		}
 	}
 `
+const Href = styled.a`
+	position: relative;
+  text-decoration: none;
+	right: 0
+	text-align: right;
+	cursor: pointer;
+	color: ${props => props.color};
+	&:hover {
+		color: white;
+		> * {
+			padding: 0 0.5em;
+			background-color: ${props => props.color};
+			border-radius: 0.1em;
+			width: 100%;
+		}
+	}
+`
 const RightLink = Slink.extend`
 	text-align: right;
 `
@@ -81,18 +98,18 @@ class Home extends Component {
 					>
 						<h2>Bookmarks</h2>
 					</RightLink>
-					<RightLink
+					<Href
 						color={this.props.colors[6]}
-						to='https://twitter.com/3b1bScreensBot'
+						href='https://twitter.com/3b1bScreensBot'
 					>
 						<h2>Twitter Bot</h2>
-					</RightLink>
-					<RightLink
+					</Href>
+					<Href
 						color={this.props.colors[7]}
-						to='https://simple-english-checker.netlify.com'
+						href='https://simple-english-checker.netlify.com'
 					>
 						<h2>Simple English</h2>
-					</RightLink>
+					</Href>
 				</RightMenu>
 			</Page>
 		)
