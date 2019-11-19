@@ -22,8 +22,8 @@ const Topbar = Block.extend`
 
 	background: linear-gradient(
 		to right,
-		${props => props.right},
-		${props => props.right_color}
+		${props => props.left_color},
+		${props => props.left_color}
 	);
 	overflow: visible;
 	align-items: stretch;

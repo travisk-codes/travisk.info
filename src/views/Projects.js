@@ -7,15 +7,17 @@ import Page from '../components/Page'
 import { projects as project_data } from '../personal.config'
 
 const ProjectsPage = styled(Page)`
-/*  max-width: 70%;*/
-  margin: 0 auto;
+	/*  max-width: 70%;*/
+	margin: 0 auto;
 `
 
-let projects = project_data.map(p => <Project {...p} key={p.title} />)
-projects.splice(4, 0, [<h1>Webpages</h1>, <br />])
+let projects = project_data.map(p => (
+	<Project {...p} key={p.title} />
+))
+projects.splice(6, 0, [<h1>Webpages</h1>, <br />])
 
 export default props => (
-  <ProjectsPage palette={props.palette}>
-    {projects}
-  </ProjectsPage>
+	<ProjectsPage palette={props.palette}>
+		{projects}
+	</ProjectsPage>
 )

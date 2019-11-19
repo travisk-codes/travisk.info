@@ -24,6 +24,7 @@ here's a list of projects i can contribute to possibly!
 const about_md = `
 ## Thanks for stopping by!
 
+<br />
 I am a novice web developer and designer looking for an entry-level position with opportunity to learn and grow. I work with standard web technologies, modern front-end tools & libraries, and server backends.
 
 <br />
@@ -33,7 +34,7 @@ I work with code, but my degree is engineering, so I know how to solve problems 
 I have experience working on enterprise codebases, fixing consumer-facing production code, and building internal tools for coworkers.
 
 <br />
-Other hobbies include learning about space & physics, mainstream auteur films, electro-indie rock-pop, and mindfulness meditation.
+Other hobbies include learning about space & physics, popular auteur/indie films, writing, and mindfulness meditation.
 `
 
 // DOMPurify
