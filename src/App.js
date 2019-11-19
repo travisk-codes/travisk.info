@@ -95,7 +95,7 @@ class App extends Component {
 		this.setState({
 			darkMode: !this.state.darkMode,
 			colors: getRandomHslColorScheme(
-				4,
+				8,
 				!this.state.darkMode
 			),
 		})

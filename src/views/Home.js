@@ -12,6 +12,7 @@ const RightMenu = styled.div`
 	top: 4em;
 	right: 0;
 	padding: 1.25em;
+	width: 18em;
 `
 const LeftMenu = styled.div``
 const Slink = styled(Link).attrs(({ color }) => ({
@@ -27,7 +28,7 @@ const Slink = styled(Link).attrs(({ color }) => ({
 			padding: 0 0.5em;
 			background-color: ${props => props.color};
 			border-radius: 0.1em;
-			width: fit-content;
+			width: 100%;
 		}
 	}
 `
