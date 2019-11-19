@@ -42,7 +42,7 @@ export default props => (
 	<Page
 		palette={props.palette}
 		style={{
-			width: '30em',
+			width: '22em',
 			textAlign: 'justify',
 			margin: '0 auto',
 		}}
