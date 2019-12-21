@@ -11,6 +11,9 @@ const Header = () => (
 		<div className='contact-info'>
 			<span>github.com/travisk-codes</span>
 			<span>me@travisk.info</span>
+			<br />
+			<span>travisk.info/resume</span>
+			<span>hire.travisk.info</span>
 		</div>
 	</div>
 )
@@ -60,7 +63,7 @@ function HeartSeparatedList(list, color) {
 			<span style={{ overflowWrap: 'break-word' }} key={i}>
 				<Heart color={color}>
 					<span aria-label='heart' role='img'>
-						♥
+						⁕
 					</span>
 				</Heart>
 				{item}
