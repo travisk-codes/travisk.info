@@ -10,6 +10,8 @@ const ContactPage = styled(Page)`
   justify-content: center;
   flex-wrap: wrap;
   align-items: flex-start;
+  max-width: 40em;
+  margin: 0 auto;
 `
 const Link = styled.a`
   display: flex;

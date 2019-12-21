@@ -7,7 +7,7 @@ import Page from '../components/Page'
 import { projects as project_data } from '../personal.config'
 
 const ProjectsPage = styled(Page)`
-	/*  max-width: 70%;*/
+	max-width: 70%;
 	margin: 0 auto;
 `
 

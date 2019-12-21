@@ -76,7 +76,7 @@ const Content = Block.extend`
 	position: relative;
 	display: block;
 	overflow-x: hidden;
-	font-size: 1.25em;
+	font-size: 1em;
 	padding-top: ${window.location.search ? 0 : '4em'};
 	background-color: ${props => props.bg_color};
 `

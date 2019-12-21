@@ -9,6 +9,11 @@ const Page = styled.div`
 			font-size: calc(0.25em + 1vw);
 		}
 	}
+	@media (min-width 1200px) {
+		html {
+			font-size: calc(0.125em + 1vw);
+		}
+	}
 `
 
 export default Page
