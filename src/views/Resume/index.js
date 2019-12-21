@@ -103,8 +103,14 @@ class Resume extends Component {
 								<b>{my.portfolio.names[1]}: </b>
 								{my.portfolio.bullets[1]}
 							</li>
-							<li>{my.portfolio.bullets[2]}</li>
-							<li>{my.portfolio.bullets[3]}</li>
+							<li>
+								<b>{my.portfolio.names[2]}: </b>
+								{my.portfolio.bullets[2]}
+								</li>
+							<li>
+								<b>{my.portfolio.names[3]}: </b>
+								{my.portfolio.bullets[3]}
+							</li>
 						</ul>
 					</Section>
 					<Section title='Technical'>
