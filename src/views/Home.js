@@ -1,119 +1,161 @@
-import React, { Component } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import DarkModeToggle from '../components/Toggle'
 
-import { getRandomHslColorScheme } from '../utils'
+import Svg from '../svg'
+
+function useWindowSize() {
+  const isClient = typeof window === 'object';
+
+  function getSize() {
+    return {
+      width: isClient ? window.innerWidth : undefined,
+      height: isClient ? window.innerHeight : undefined
+    };
+  }
+
+  const [windowSize, setWindowSize] = useState(getSize);
+
+  useEffect(() => {
+    if (!isClient) {
+      return false;
+    }
+    
+    function handleResize() {
+      setWindowSize(getSize());
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []); // Empty array ensures that effect is only run on mount and unmount
+
+  return windowSize;
+}
+
+const row_height = 1
+
+const LinkRowContainer = styled.div`
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+`
+const Title = styled.div`
+	display: flex;
+	font-size: 2.5em;
+	font-weight: bolder;
+	font-family: sans-serif;
+	flex: 1 1 auto;
+	color: #fafafa
+	box-sizing: border-box;
+	text-decoration: unset;
+	&:hover {
+		text-decoration: underline dashed #fafafa;
+	}
+`
+/*const Icon = styled.img`
+	border: 1px solid black;
+	width: 6em;
+	height: 6em;
+	margin: 1em;
+`*/
+const Space = styled.div`
+	font-size: 2.5em;
+	font-weight: bolder;
+	font-family: sans-serif;
+	visibility: hidden;
+	flex: 1 1 auto;
+`
+const SpaceUnbalanced = styled.div`
+	font-size: 2.5em;
+	font-weight: bolder;
+	font-family: sans-serif;
+	visibility: hidden;
+	width: 4em;
+`
+function LinkRow(props) {
+	let space = <Space>{props.to}</Space>
+	if (props.unbalanced) space = null
+	return (
+		<LinkRowContainer style={{justifyContent: props.unblanced ? 'flex-start' : 'center'}}>
+			{ props.left 
+				? <Title>{props.to}</Title> 
+				: space
+			}
+			<Icon style={{...props.style}}>{props.children}</Icon>
+			{ props.left 
+				? space
+				: <Title>{props.to}</Title>
+			}
+		</LinkRowContainer>
+	)
+}
 
 const Page = styled.div`
-	padding: 1.25em;
+position: fixed;
+width: 100%;
+top: 0;
+bottom: 0;
+z-index: 1;
+display: flex;
+flex-direction: column;
+justify-content: center;
+background-color: #1a1a1a;
 `
-const RightMenu = styled.div`
-	position: absolute;
-	top: 4em;
-	right: 0;
-	padding: 1.25em;
-	width: 18em;
-`
-const LeftMenu = styled.div``
-const Slink = styled(Link).attrs(({ color }) => ({
-	color: color || 'red',
-}))`
-	position: relative;
-  text-decoration: none;
-  right: 0
-	color: ${props => props.color};
-	&:hover {
-		color: white;
-		> * {
-			padding: 0 0.5em;
-			background-color: ${props => props.color};
-			border-radius: 0.1em;
-			width: 100%;
-		}
-	}
-`
-const Href = styled.a`
-	position: relative;
-  text-decoration: none;
-	right: 0
-	text-align: right;
-	cursor: pointer;
-	color: ${props => props.color};
-	&:hover {
-		color: white;
-		> * {
-			padding: 0 0.5em;
-			background-color: ${props => props.color};
-			border-radius: 0.1em;
-			width: 100%;
-		}
-	}
-`
-const RightLink = Slink.extend`
-	text-align: right;
-`
+const Icon = styled.svg`
+	display: flex;
+	margin: 0em 1em;
+	fill: ${props => (props.fill ? props.fill : '#fafafa')};
+	width: ${props => (props.width ? props.width : '4em')};
+	height: ${props => (props.width ? props.width : '4em')};
+	padding-left: ${props => props.paddingLeft}
 
-class Home extends Component {
-	render() {
-		const colors = getRandomHslColorScheme(
-			4,
-			this.props.palette.theme === 'dark' ? true : false
-		)
-		return (
-			<Page>
-				<RightMenu>
-					<RightLink
-						color={this.props.colors[0]}
-						to='/about'
-					>
-						<h2>About Me</h2>
-					</RightLink>
-					<RightLink
-						color={this.props.colors[1]}
-						to='/contact'
-					>
-						<h2>Contact</h2>
-					</RightLink>
-					<RightLink
-						color={this.props.colors[2]}
-						to='/projects'
-					>
-						<h2>Projects</h2>
-					</RightLink>
-					<RightLink
-						color={this.props.colors[3]}
-						to='/resume'
-					>
-						<h2>Resume</h2>
-					</RightLink>
-					<RightLink
-						color={this.props.colors[4]}
-						to='/cat-pics'
-					>
-						<h2>Cat Pictures</h2>
-					</RightLink>
-					<RightLink
-						color={this.props.colors[5]}
-						to='/links'
-					>
-						<h2>Bookmarks</h2>
-					</RightLink>
-					<Href
-						color={this.props.colors[6]}
-						href='https://twitter.com/3b1bScreensBot'
-					>
-						<h2>Twitter Bot</h2>
-					</Href>
-					<Href
-						color={this.props.colors[7]}
-						href='https://simple-english-checker.netlify.com'
-					>
-						<h2>Simple English</h2>
-					</Href>
-				</RightMenu>
-			</Page>
-		)
-	}
+`
+function Home(props) {
+	const size = useWindowSize()
+	const unbalanced = size.width < 500 ? true : false
+
+	return (
+		<Page style={{alignItems: unbalanced ? 'flex-end' : 'center'}}>
+			<Link to='/about'>
+			<LinkRow style={{paddingLeft: '0.3em'}} left unbalanced={unbalanced} to='About'>
+				<Icon
+					width={Svg.about.width}
+					fill={props.palette}
+					viewBox={Svg.about.viewbox}>
+					<path d={Svg.about.path} />
+				</Icon>
+			</LinkRow>
+			</Link>
+			<LinkRow style={{paddingLeft: '0.15em'}} left unbalanced={unbalanced} to='Projects'>
+				<Icon
+					width={Svg.projects.width}
+					fill={props.palette}
+					viewBox={Svg.projects.viewbox}>
+					<path d={Svg.projects.path} />
+				</Icon>
+			</LinkRow>
+
+			<LinkRow left={unbalanced} unbalanced={unbalanced} to='Resume'>
+				<Icon
+					width={Svg.resume.width}
+					fill={props.palette}
+					viewBox={Svg.resume.viewbox}>
+					<path d={Svg.resume.path} />
+				</Icon>
+			</LinkRow>
+
+			<LinkRow style={{paddingLeft: '0.5em'}} left={unbalanced} unbalanced={unbalanced} to='Contact'>
+				<Icon
+					width={Svg.contact.width}
+					fill={props.palette}
+					paddingLeft='0.3em'
+					viewBox={Svg.contact.viewbox}>
+					<path d={Svg.contact.path} />
+				</Icon>
+			</LinkRow>
+		</Page>
+	)
 }
 
 export default Home

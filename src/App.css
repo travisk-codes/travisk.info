@@ -11,3 +11,21 @@ body,
 html {
 	font-size: calc(0.5em + 1vw);
 }
+
+@media (min-width: 40em) {
+	html {
+		font-size: calc(0.4em + 1vw);
+	}
+}
+
+@media (min-width: 60em) {
+	html {
+		font-size: calc(0.30em + 1vw);
+	}
+}
+
+@media (min-width: 80em) {
+	html {
+		font-size: calc(0.20em + 1vw);
+	}
+}
