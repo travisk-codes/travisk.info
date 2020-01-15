@@ -1,8 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import DarkModeToggle from '../components/Toggle'
-
 import Svg from '../svg'
 
 function useWindowSize() {
@@ -49,16 +47,11 @@ const Title = styled.div`
 	color: #fafafa
 	box-sizing: border-box;
 	text-decoration: unset;
+	padding-bottom: 0.1em;
 	&:hover {
 		text-decoration: underline dashed #fafafa;
 	}
 `
-/*const Icon = styled.img`
-	border: 1px solid black;
-	width: 6em;
-	height: 6em;
-	margin: 1em;
-`*/
 const Space = styled.div`
 	font-size: 2.5em;
 	font-weight: bolder;
@@ -99,7 +92,7 @@ bottom: 0;
 z-index: 1;
 display: flex;
 flex-direction: column;
-justify-content: center;
+justify-content: flex-start;
 background-color: #1a1a1a;
 `
 const Icon = styled.svg`
@@ -109,51 +102,65 @@ const Icon = styled.svg`
 	width: ${props => (props.width ? props.width : '4em')};
 	height: ${props => (props.width ? props.width : '4em')};
 	padding-left: ${props => props.paddingLeft}
-
 `
+const A = styled.a`
+	outline: none;
+	text-decoration: none;
+`
+const SLink = styled(Link)`
+	text-decoration: none;
+`
+
 function Home(props) {
 	const size = useWindowSize()
-	const unbalanced = size.width < 500 ? true : false
+	const unbalanced = true
 
 	return (
 		<Page style={{alignItems: unbalanced ? 'flex-end' : 'center'}}>
-			<Link to='/about'>
-			<LinkRow style={{paddingLeft: '0.3em'}} left unbalanced={unbalanced} to='About'>
-				<Icon
-					width={Svg.about.width}
-					fill={props.palette}
-					viewBox={Svg.about.viewbox}>
-					<path d={Svg.about.path} />
-				</Icon>
-			</LinkRow>
-			</Link>
-			<LinkRow style={{paddingLeft: '0.15em'}} left unbalanced={unbalanced} to='Projects'>
-				<Icon
-					width={Svg.projects.width}
-					fill={props.palette}
-					viewBox={Svg.projects.viewbox}>
-					<path d={Svg.projects.path} />
-				</Icon>
-			</LinkRow>
+			<SLink style={{textDecoration: 'none'}} to='/about'>
+				<LinkRow style={{paddingLeft: '0.3em'}} left unbalanced={unbalanced} to='About'>
+					<Icon
+						width={Svg.about.width}
+						fill={props.palette}
+						viewBox={Svg.about.viewbox}>
+						<path d={Svg.about.path} />
+					</Icon>
+				</LinkRow>
+			</SLink>
 
-			<LinkRow left={unbalanced} unbalanced={unbalanced} to='Resume'>
-				<Icon
-					width={Svg.resume.width}
-					fill={props.palette}
-					viewBox={Svg.resume.viewbox}>
-					<path d={Svg.resume.path} />
-				</Icon>
-			</LinkRow>
+			<SLink to='projects'>
+				<LinkRow style={{paddingLeft: '0.15em'}} left unbalanced={unbalanced} to='Projects'>
+					<Icon
+						width={Svg.projects.width}
+						fill={props.palette}
+						viewBox={Svg.projects.viewbox}>
+						<path d={Svg.projects.path} />
+					</Icon>
+				</LinkRow>
+			</SLink>
 
-			<LinkRow style={{paddingLeft: '0.5em'}} left={unbalanced} unbalanced={unbalanced} to='Contact'>
-				<Icon
-					width={Svg.contact.width}
-					fill={props.palette}
-					paddingLeft='0.3em'
-					viewBox={Svg.contact.viewbox}>
-					<path d={Svg.contact.path} />
-				</Icon>
-			</LinkRow>
+			<A href='https://hire.travisk.info'>
+				<LinkRow left={unbalanced} unbalanced={unbalanced} to='Resume'>
+					<Icon
+						width={Svg.resume.width}
+						fill={props.palette}
+						viewBox={Svg.resume.viewbox}>
+						<path d={Svg.resume.path} />
+					</Icon>
+				</LinkRow>
+			</A>
+
+			<SLink to='/contact'>
+				<LinkRow style={{paddingLeft: '0.5em'}} left={unbalanced} unbalanced={unbalanced} to='Contact'>
+					<Icon
+						width={Svg.contact.width}
+						fill={props.palette}
+						paddingLeft='0.3em'
+						viewBox={Svg.contact.viewbox}>
+						<path d={Svg.contact.path} />
+					</Icon>
+				</LinkRow>
+			</SLink>
 		</Page>
 	)
 }
