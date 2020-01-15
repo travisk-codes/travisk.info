@@ -113,7 +113,8 @@ const SLink = styled(Link)`
 `
 const Signature = styled(Icon)`
 	align-self: flex-start;
-	margin-left: 1.5em;
+	margin-left: 1em;
+	margin-top: -1em;
 `
 const PageMaxWidthConstraint = styled.div`
 	background-color: #1a1a1a;
