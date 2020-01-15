@@ -85,12 +85,12 @@ function LinkRow(props) {
 }
 
 const Page = styled.div`
-position: fixed;
-width: 100%;
+position: relative;
 top: 0;
 bottom: 0;
 z-index: 1;
 display: flex;
+flex: 0 1 60em;
 flex-direction: column;
 justify-content: flex-start;
 background-color: #1a1a1a;
@@ -108,7 +108,23 @@ const A = styled.a`
 	text-decoration: none;
 `
 const SLink = styled(Link)`
+	outline: none;
 	text-decoration: none;
+`
+const Signature = styled(Icon)`
+	align-self: flex-start;
+	margin-left: 1.5em;
+`
+const PageMaxWidthConstraint = styled.div`
+	background-color: #1a1a1a;
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1;
 `
 
 function Home(props) {
@@ -116,7 +132,15 @@ function Home(props) {
 	const unbalanced = true
 
 	return (
+		<PageMaxWidthConstraint>
 		<Page style={{alignItems: unbalanced ? 'flex-end' : 'center'}}>
+			<Signature
+				style={{strokeWidth: `5`, stroke: '#fafafa'}}
+				width={Svg.signature.width}
+				fill='#fafafa'
+				viewBox={Svg.signature.viewbox}>
+				<path d={Svg.signature.path} />
+			</Signature>
 			<SLink style={{textDecoration: 'none'}} to='/about'>
 				<LinkRow style={{paddingLeft: '0.3em'}} left unbalanced={unbalanced} to='About'>
 					<Icon
@@ -162,6 +186,7 @@ function Home(props) {
 				</LinkRow>
 			</SLink>
 		</Page>
+		</PageMaxWidthConstraint>
 	)
 }
 
