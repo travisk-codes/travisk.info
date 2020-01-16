@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import my from '../../personal.config.js'
 import styled from 'styled-components'
 import './Resume.css'
@@ -79,20 +79,6 @@ class Resume extends Component {
 			<Page palette={this.props.palette}>
 				<div className='resume'>
 					<Header />
-					<Section title='Experience'>
-						<Details
-							credential={my.job.title}
-							organization={my.job.company}
-							location={my.job.location}
-							start={my.job.duration[0]}
-							end={my.job.duration[1]}
-						/>
-						<ul>
-							{my.job.bullets.map((item, i) => (
-								<li key={i}>{item}</li>
-							))}
-						</ul>
-					</Section>
 					<Section title='Portfolio'>
 						<ul>
 							<li>
@@ -137,6 +123,24 @@ class Resume extends Component {
 								)}
 							</li>
 						</ul>
+					</Section>
+					<Section title='Experience'>
+						{my.jobs.map((job, i) => (
+							<div style={{paddingTop: i !== 0 ? '1em' : 0}}>
+								<Details
+									credential={job.title}
+									organization={job.company}
+									location={job.location}
+									start={job.duration[0]}
+									end={job.duration[1]}
+								/>
+								<ul>
+									{job.bullets.map((item, i) => (
+										<li key={i}>{item}</li>
+									))}
+								</ul>
+							</div>
+						))}
 					</Section>
 					<Section title='Education'>
 						<Details
