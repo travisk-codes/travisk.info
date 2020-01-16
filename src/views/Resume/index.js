@@ -27,20 +27,23 @@ const Section = props => (
 
 const Details = props => (
 	<div className='details'>
-		<span className='left'>
-			<b>{props.credential}</b>
-			<br />
-			<span>{props.organization}, </span>
-			<wbr />
-			<span>{props.location}</span>
+
+		<span className='details_job-title'>
+			{props.credential}
 		</span>
-		<span className='right'>
-			<i>
-				<span>{props.start}—</span>
-				<wbr />
-				<span>{props.end}</span>
-			</i>
-		</span>
+		<div className='details_company-dates'>
+			<span className='details_company'>
+				{props.organization}
+			</span>
+			<span className='details_dates'>
+				<i>
+					<span>{props.start}—</span>
+					<wbr />
+					<span>{props.end}</span>
+				</i>
+			</span>
+		</div>
+
 	</div>
 )
 

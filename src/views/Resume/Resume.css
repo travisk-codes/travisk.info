@@ -37,15 +37,6 @@
   padding-bottom: 0.33em;
 }
 
-.section .details {
-  display: flex;
-  justify-content: space-between;
-  padding-left: 0.1em;
-  padding-bottom: 0.5em;
-  white-space: nowrap;
-  align-items: flex-end;
-}
-
 .section .left {
   text-align: left;
   margin: 0;
@@ -66,6 +57,22 @@
 .section .content {
   text-align: left;
   padding-left: 1.5em;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+}
+
+.details_job-title {
+  font-weight: bold;
+}
+
+.details_company-dates {
+  display: flex;
+  justify-content: space-between;
+  white-space: nowrap;
+  flex-wrap: wrap;
 }
 
 @media (max-width: 900px) {
