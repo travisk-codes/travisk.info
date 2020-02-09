@@ -1,9 +1,35 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import my from '../../personal.config.js'
 import styled from 'styled-components'
 import './Resume.css'
 
 import Page from '../../components/Page'
+
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
+import { 
+	faBookmark,
+	faDatabase,
+	faShareAlt,
+	faRetweet,
+	faCode,
+	faSearch,
+	faWrench,
+	faDumbbell,
+	faTaxi,
+	faCog,
+	faUserGraduate,
+} from '@fortawesome/free-solid-svg-icons'
+
+const FAIcon = styled(Icon)`
+	position: absolute;
+	margin-left: -1.9em;
+	margin-top: .2em;
+`
+const JobIcon = styled(Icon)`
+	position: absolute;
+	margin-left: 1em;
+	margin-top: .2em;
+`
 
 const Header = () => (
 	<div className='header'>
@@ -33,7 +59,7 @@ const Details = props => (
 		</span>
 		<div className='details_company-dates'>
 			<span className='details_company'>
-				{props.organization}
+				<i>{props.organization}</i>
 			</span>
 			<span className='details_dates'>
 				<i>
@@ -76,6 +102,14 @@ function HeartSeparatedList(list, color) {
 	return <span>{items}</span>
 }
 
+const Li = styled.li`
+	list-style: none;
+`
+const job_icons = [
+	<JobIcon icon={faTaxi} />,
+	<JobIcon icon={faSearch} />,
+	<JobIcon icon={faCog} />,
+]
 class Resume extends Component {
 	render() {
 		return (
@@ -84,52 +118,60 @@ class Resume extends Component {
 					<Header />
 					<Section title='Portfolio'>
 						<ul>
-							<li>
+							<Li>
+								<FAIcon icon={faBookmark} />
 								<b>{my.portfolio.names[0]}: </b>
 								{my.portfolio.bullets[0]}
-							</li>
-							<li>
+							</Li>
+							<Li>
+								<FAIcon icon={faDatabase} />
 								<b>{my.portfolio.names[1]}: </b>
 								{my.portfolio.bullets[1]}
-							</li>
-							<li>
+							</Li>
+							<Li>
+								<FAIcon style={{marginLeft: '-2.1em'}} icon={faRetweet} />
 								<b>{my.portfolio.names[2]}: </b>
 								{my.portfolio.bullets[2]}
-								</li>
-							<li>
+								</Li>
+							<Li>
+								<FAIcon icon={faShareAlt} />
 								<b>{my.portfolio.names[3]}: </b>
 								{my.portfolio.bullets[3]}
-							</li>
+							</Li>
 						</ul>
 					</Section>
 					<Section title='Technical'>
 						<ul>
-							<li>
+							<Li>
+								<FAIcon style={{marginLeft: '-2.1em'}} icon={faCode} />
 								<b>Languages: </b>
 								{HeartSeparatedList(
 									my.knowledge.languages,
 									this.props.palette.text
 								)}
-							</li>
-							<li>
+							</Li>
+							<Li>
+								<FAIcon style={{marginLeft: '-2.1em'}} icon={faDumbbell} />
 								<b>Practices: </b>
 								{HeartSeparatedList(
 									my.knowledge.practices,
 									this.props.palette.text
 								)}
-							</li>
-							<li>
+							</Li>
+							<Li>
+								<FAIcon icon={faWrench} />
 								<b>Technologies: </b>
 								{HeartSeparatedList(
 									my.knowledge.technologies,
 									this.props.palette.text
 								)}
-							</li>
+							</Li>
 						</ul>
 					</Section>
 					<Section title='Experience'>
 						{my.jobs.map((job, i) => (
 							<div style={{paddingTop: i !== 0 ? '1em' : 0}}>
+								{job_icons[i]}
 								<Details
 									credential={job.title}
 									organization={job.company}
@@ -146,6 +188,7 @@ class Resume extends Component {
 						))}
 					</Section>
 					<Section title='Education'>
+						<JobIcon icon={faUserGraduate} />
 						<Details
 							credential={my.education.degree}
 							organization={my.education.institute}

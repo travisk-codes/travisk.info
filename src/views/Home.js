@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import Svg from '../svg'
@@ -73,8 +73,6 @@ const PageMaxWidthConstraint = styled.div`
 `
 
 function Home(props) {
-	const unbalanced = true
-
 	return (
 		<PageMaxWidthConstraint>
 		<Page>
