@@ -84,12 +84,7 @@ function Home(props) {
 	function LinkRow(props) {
 		return (
 			<LinkRowContainer>
-				<Title
-					style={{
-						filter: `drop-shadow(${right}px ${bottom}px hsl(${sigBgColor}, 100%, 66%))`,
-					}}>
-					{props.to}
-				</Title>
+				<Title>{props.to}</Title>
 				<Icon>{props.children}</Icon>
 			</LinkRowContainer>
 		)
@@ -111,9 +106,6 @@ function Home(props) {
 				<A href='https://hire.travisk.info'>
 					<LinkRow to='About'>
 						<Icon
-							style={{
-								filter: `drop-shadow(${right}px ${bottom}px hsl(${sigBgColor}, 100%, 66%))`,
-							}}
 							width={Svg.about.width}
 							fill={props.palette}
 							paddingLeft='0.3em'
@@ -126,9 +118,6 @@ function Home(props) {
 				<SLink to='/projects'>
 					<LinkRow to='Projects'>
 						<Icon
-							style={{
-								filter: `drop-shadow(${right}px ${bottom}px hsl(${sigBgColor}, 100%, 66%))`,
-							}}
 							width={Svg.projects.width}
 							fill={props.palette}
 							paddingLeft='0.15em'
@@ -141,9 +130,6 @@ function Home(props) {
 				<A href='/resume?noheader'>
 					<LinkRow to='Resume'>
 						<Icon
-							style={{
-								filter: `drop-shadow(${right}px ${bottom}px hsl(${sigBgColor}, 100%, 66%))`,
-							}}
 							width={Svg.resume.width}
 							fill={props.palette}
 							viewBox={Svg.resume.viewbox}>
@@ -155,9 +141,6 @@ function Home(props) {
 				<SLink to='/contact'>
 					<LinkRow style={{ paddingLeft: '0.5em' }} to='Contact'>
 						<Icon
-							style={{
-								filter: `drop-shadow(${right}px ${bottom}px hsl(${sigBgColor}, 100%, 66%))`,
-							}}
 							width={Svg.contact.width}
 							fill={props.palette}
 							paddingLeft='0.3em'
