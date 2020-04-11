@@ -10,18 +10,15 @@ const LinkRowContainer = styled.div`
 const Title = styled.div`
 	font-size: 2.5em;
 	font-family: Ubuntu;
-	color: #fafafa
-	&:hover {
-		text-decoration: underline dotted #fafafa;
-	}
+	color: #fafafa;
 `
 const Icon = styled.svg`
 	display: flex;
 	margin: 0em 1em;
-	fill: ${props => (props.fill ? props.fill : '#fafafa')};
-	width: ${props => (props.width ? props.width : '4em')};
-	height: ${props => (props.width ? props.width : '4em')};
-	padding-left: ${props => props.paddingLeft};
+	fill: ${(props) => (props.fill ? props.fill : '#fafafa')};
+	width: ${(props) => (props.width ? props.width : '4em')};
+	height: ${(props) => (props.width ? props.width : '4em')};
+	padding-left: ${(props) => props.paddingLeft};
 `
 
 const Page = styled.div`
@@ -39,6 +36,12 @@ const Page = styled.div`
 const A = styled.a`
 	outline: none;
 	text-decoration: none;
+	&:hover {
+		svg > svg {
+			filter: drop-shadow(rgb(255, 82, 111) 3px 3px);
+		}
+	}
+	cursor: pointer;
 `
 const SLink = styled(Link)`
 	outline: none;
@@ -115,7 +118,7 @@ function Home(props) {
 					</LinkRow>
 				</A>
 
-				<SLink to='/projects'>
+				<A to='/projects'>
 					<LinkRow to='Projects'>
 						<Icon
 							width={Svg.projects.width}
@@ -125,7 +128,7 @@ function Home(props) {
 							<path d={Svg.projects.path} />
 						</Icon>
 					</LinkRow>
-				</SLink>
+				</A>
 
 				<A href='/resume?noheader'>
 					<LinkRow to='Resume'>
@@ -138,7 +141,7 @@ function Home(props) {
 					</LinkRow>
 				</A>
 
-				<SLink to='/contact'>
+				<A to='/contact'>
 					<LinkRow style={{ paddingLeft: '0.5em' }} to='Contact'>
 						<Icon
 							width={Svg.contact.width}
@@ -148,7 +151,7 @@ function Home(props) {
 							<path d={Svg.contact.path} />
 						</Icon>
 					</LinkRow>
-				</SLink>
+				</A>
 			</Page>
 		</PageMaxWidthConstraint>
 	)
