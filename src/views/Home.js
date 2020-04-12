@@ -58,7 +58,7 @@ const Signature = styled(Icon)`
 	fill: ${(props) => props.palette.text};
 `
 const PageMaxWidthConstraint = styled.div`
-	background-color: #1a1a1a;
+	background-color: ${(props) => props.bgColor};
 	position: fixed;
 	display: flex;
 	justify-content: center;
@@ -97,7 +97,7 @@ function Home(props) {
 	}
 
 	return (
-		<PageMaxWidthConstraint>
+		<PageMaxWidthConstraint bgColor={props.palette.bg}>
 			<Page palette={props.palette}>
 				<Signature
 					style={{
