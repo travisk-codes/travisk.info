@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+
+import DarkModeToggle from '../components/Toggle'
 import Svg from '../svg'
 
 const LinkRowContainer = styled.div`
@@ -118,7 +120,7 @@ function Home(props) {
 					</LinkRow>
 				</A>
 
-				<A to='/projects'>
+				<A href='https://travisk.info/projects'>
 					<LinkRow to='Projects'>
 						<Icon
 							width={Svg.projects.width}
@@ -130,7 +132,7 @@ function Home(props) {
 					</LinkRow>
 				</A>
 
-				<A href='/resume?noheader'>
+				<A href='https://travisk.info/resume?noheader'>
 					<LinkRow to='Resume'>
 						<Icon
 							width={Svg.resume.width}
@@ -141,7 +143,7 @@ function Home(props) {
 					</LinkRow>
 				</A>
 
-				<A to='/contact'>
+				<A href='https://travisk.info/contact'>
 					<LinkRow style={{ paddingLeft: '0.5em' }} to='Contact'>
 						<Icon
 							width={Svg.contact.width}
@@ -152,6 +154,7 @@ function Home(props) {
 						</Icon>
 					</LinkRow>
 				</A>
+				<DarkModeToggle />
 			</Page>
 		</PageMaxWidthConstraint>
 	)
