@@ -12,7 +12,7 @@ const LinkRowContainer = styled.div`
 const Title = styled.div`
 	font-size: 2.5em;
 	font-family: Ubuntu;
-	color: #fafafa;
+	color: ${(props) => props.color};
 `
 const Icon = styled.svg`
 	display: flex;
@@ -33,7 +33,7 @@ const Page = styled.div`
 	flex-direction: column;
 	align-items: flex-end;
 	justify-content: flex-start;
-	background-color: #1a1a1a;
+	background-color: ${(props) => props.palette.bg};
 `
 const A = styled.a`
 	outline: none;
@@ -55,7 +55,7 @@ const Signature = styled(Icon)`
 	margin-top: -1em;
 	stroke-width: 0;
 	stroke: black;
-	fill: #fafafa;
+	fill: ${(props) => props.palette.text};
 `
 const PageMaxWidthConstraint = styled.div`
 	background-color: #1a1a1a;
@@ -70,6 +70,7 @@ const PageMaxWidthConstraint = styled.div`
 `
 
 function Home(props) {
+	const { text } = props.palette
 	let [sigBgColor, setSigBgColor] = React.useState(350)
 	let [sigBgAngle, setSigBgAngle] = React.useState(45)
 
@@ -89,7 +90,7 @@ function Home(props) {
 	function LinkRow(props) {
 		return (
 			<LinkRowContainer>
-				<Title>{props.to}</Title>
+				<Title color={text}>{props.to}</Title>
 				<Icon>{props.children}</Icon>
 			</LinkRowContainer>
 		)
@@ -97,11 +98,12 @@ function Home(props) {
 
 	return (
 		<PageMaxWidthConstraint>
-			<Page>
+			<Page palette={props.palette}>
 				<Signature
 					style={{
 						filter: `drop-shadow(${sigRight}px ${sigBottom}px hsl(${sigBgColor}, 100%, 66%))`,
 					}}
+					palette={props.palette}
 					width={'10em'}
 					onClick={newColorAndAngle}
 					viewBox={'0 0 875 536'}>
@@ -112,7 +114,7 @@ function Home(props) {
 					<LinkRow to='About'>
 						<Icon
 							width={Svg.about.width}
-							fill={props.palette}
+							fill={props.palette.text}
 							paddingLeft='0.3em'
 							viewBox={Svg.about.viewbox}>
 							<path d={Svg.about.path} />
@@ -124,7 +126,7 @@ function Home(props) {
 					<LinkRow to='Projects'>
 						<Icon
 							width={Svg.projects.width}
-							fill={props.palette}
+							fill={props.palette.text}
 							paddingLeft='0.15em'
 							viewBox={Svg.projects.viewbox}>
 							<path d={Svg.projects.path} />
@@ -136,7 +138,7 @@ function Home(props) {
 					<LinkRow to='Resume'>
 						<Icon
 							width={Svg.resume.width}
-							fill={props.palette}
+							fill={props.palette.text}
 							viewBox={Svg.resume.viewbox}>
 							<path d={Svg.resume.path} />
 						</Icon>
@@ -147,14 +149,13 @@ function Home(props) {
 					<LinkRow style={{ paddingLeft: '0.5em' }} to='Contact'>
 						<Icon
 							width={Svg.contact.width}
-							fill={props.palette}
+							fill={props.palette.text}
 							paddingLeft='0.3em'
 							viewBox={Svg.contact.viewbox}>
 							<path d={Svg.contact.path} />
 						</Icon>
 					</LinkRow>
 				</A>
-				<DarkModeToggle />
 			</Page>
 		</PageMaxWidthConstraint>
 	)
