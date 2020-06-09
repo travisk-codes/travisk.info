@@ -6,7 +6,7 @@ import './Resume.css'
 import Page from '../../components/Page'
 
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
-import { 
+import {
 	faBookmark,
 	faDatabase,
 	faShareAlt,
@@ -18,17 +18,18 @@ import {
 	faTaxi,
 	faCog,
 	faUserGraduate,
+	faVideo,
 } from '@fortawesome/free-solid-svg-icons'
 
 const FAIcon = styled(Icon)`
 	position: absolute;
 	margin-left: -1.9em;
-	margin-top: .2em;
+	margin-top: 0.2em;
 `
 const JobIcon = styled(Icon)`
 	position: absolute;
 	margin-left: 1em;
-	margin-top: .2em;
+	margin-top: 0.2em;
 `
 
 const Header = () => (
@@ -44,19 +45,16 @@ const Header = () => (
 	</div>
 )
 
-const Section = props => (
+const Section = (props) => (
 	<div className='section'>
 		<h2 className='section title'>{props.title}</h2>
 		{props.children}
 	</div>
 )
 
-const Details = props => (
+const Details = (props) => (
 	<div className='details'>
-
-		<span className='details_job-title'>
-			{props.credential}
-		</span>
+		<span className='details_job-title'>{props.credential}</span>
 		<div className='details_company-dates'>
 			<span className='details_company'>
 				<i>{props.organization}</i>
@@ -69,17 +67,15 @@ const Details = props => (
 				</i>
 			</span>
 		</div>
-
 	</div>
 )
 
 const Heart = styled.span`
 	position: relative;
 	font-size: 0.5em;
-	color: ${props =>
-		props.color ? props.color : '#1a1a1a'};
+	color: ${(props) => (props.color ? props.color : '#1a1a1a')};
 	top: -0.3em;
-	padding: ${props => (props.first ? '.33em' : '1em')};
+	padding: ${(props) => (props.first ? '.33em' : '1em')};
 `
 function HeartSeparatedList(list, color) {
 	let items = list.map((item, i) =>
@@ -97,7 +93,7 @@ function HeartSeparatedList(list, color) {
 				</Heart>
 				{item}
 			</span>
-		)
+		),
 	)
 	return <span>{items}</span>
 }
@@ -119,20 +115,20 @@ class Resume extends Component {
 					<Section title='Portfolio'>
 						<ul>
 							<Li>
-								<FAIcon icon={faBookmark} />
+								<FAIcon icon={faVideo} />
 								<b>{my.portfolio.names[0]}: </b>
 								{my.portfolio.bullets[0]}
 							</Li>
 							<Li>
-								<FAIcon icon={faDatabase} />
+								<FAIcon icon={faBookmark} />
 								<b>{my.portfolio.names[1]}: </b>
 								{my.portfolio.bullets[1]}
 							</Li>
 							<Li>
-								<FAIcon style={{marginLeft: '-2.1em'}} icon={faRetweet} />
+								<FAIcon style={{ marginLeft: '-2em' }} icon={faDatabase} />
 								<b>{my.portfolio.names[2]}: </b>
 								{my.portfolio.bullets[2]}
-								</Li>
+							</Li>
 							<Li>
 								<FAIcon icon={faShareAlt} />
 								<b>{my.portfolio.names[3]}: </b>
@@ -143,19 +139,19 @@ class Resume extends Component {
 					<Section title='Technical'>
 						<ul>
 							<Li>
-								<FAIcon style={{marginLeft: '-2.1em'}} icon={faCode} />
+								<FAIcon style={{ marginLeft: '-2.1em' }} icon={faCode} />
 								<b>Languages: </b>
 								{HeartSeparatedList(
 									my.knowledge.languages,
-									this.props.palette.text
+									this.props.palette.text,
 								)}
 							</Li>
 							<Li>
-								<FAIcon style={{marginLeft: '-2.1em'}} icon={faDumbbell} />
+								<FAIcon style={{ marginLeft: '-2.1em' }} icon={faDumbbell} />
 								<b>Practices: </b>
 								{HeartSeparatedList(
 									my.knowledge.practices,
-									this.props.palette.text
+									this.props.palette.text,
 								)}
 							</Li>
 							<Li>
@@ -163,14 +159,14 @@ class Resume extends Component {
 								<b>Technologies: </b>
 								{HeartSeparatedList(
 									my.knowledge.technologies,
-									this.props.palette.text
+									this.props.palette.text,
 								)}
 							</Li>
 						</ul>
 					</Section>
 					<Section title='Experience'>
 						{my.jobs.map((job, i) => (
-							<div style={{paddingTop: i !== 0 ? '1em' : 0}}>
+							<div style={{ paddingTop: i !== 0 ? '1em' : 0 }}>
 								{job_icons[i]}
 								<Details
 									credential={job.title}
