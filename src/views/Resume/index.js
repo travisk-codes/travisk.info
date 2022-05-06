@@ -102,9 +102,9 @@ const Li = styled.li`
 	list-style: none;
 `
 const job_icons = [
+	<JobIcon icon={faCog} />,
 	<JobIcon icon={faTaxi} />,
 	<JobIcon icon={faSearch} />,
-	<JobIcon icon={faCog} />,
 ]
 class Resume extends Component {
 	render() {
